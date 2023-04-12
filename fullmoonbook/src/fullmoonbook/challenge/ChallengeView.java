@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class ChallengeView {
 	public static void main(String[] args) {
 	
+		
+		
 	}
 	
 	private static ChallengeView instance = new ChallengeView();//싱글톤(객체 1개만 생성)
@@ -33,5 +35,17 @@ public class ChallengeView {
 		String status = scanner.nextLine();
 		return new ChallengeVO(status);
 	}
+	
+	public ChallengeVO getPage(Scanner scanner) {
+		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165)");
+		int page = Integer.parseInt(scanner.nextLine());
+		return new ChallengeVO(page);
+	}
+	
+	public ChallengeVO getGoal() {
+		 / vo.printP(); 
+	}
+	
+
 	
 }

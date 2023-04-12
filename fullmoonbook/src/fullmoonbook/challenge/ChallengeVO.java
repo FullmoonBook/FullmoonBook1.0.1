@@ -21,6 +21,9 @@ public class ChallengeVO {
 	public ChallengeVO(String status) {
 		this.status = status; 
 	}
+	public ChallengeVO(int page) {
+		this.page = page; 
+	}
 	//getter setter
 	public String getId() {
 		return id;

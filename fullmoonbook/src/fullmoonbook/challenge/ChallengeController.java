@@ -10,7 +10,7 @@ public class ChallengeController {
 	
 	private ChallengeService service = ChallengeService.getInstance();
 	
-	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
-		return service.getChallenge(searchBookNo);		
+	public ChallengeVO getChallenge(String BookNo) throws Exception {
+		return service.getChallenge(BookNo);		
 	} 
 }

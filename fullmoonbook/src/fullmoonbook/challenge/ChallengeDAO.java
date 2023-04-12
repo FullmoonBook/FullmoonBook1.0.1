@@ -65,6 +65,17 @@ public class ChallengeDAO {
 	public ChallengeVO insertChallengeStatus(String status) throws Exception {
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
 		StringBuilder builder = new StringBuilder();
+		builder.append("INSERT INTO challenge (");
+		builder.append("    id,");
+		builder.append("    book_no,");
+		builder.append("    status,");
+		builder.append("    goal");
+		builder.append(") VALUES (");
+		builder.append("    ?,"); //현재 아이디로 불러와져야 함.
+		builder.append("    '0003',");
+		builder.append("    ?,");
+		builder.append("    ?");
+		builder.append(")");
 		
 	}
 	
