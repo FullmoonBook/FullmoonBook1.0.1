@@ -9,14 +9,25 @@ public class MainView {
     public static MainView getInstance() {
         return instance;
     }
-    public int init(Scanner scanner) {
-        System.out.println("\\t  ₍ᐢ｡ ˬ ｡ᐢ₎\\n\\t보름 한 책");
-        System.out.print(HomeMenu.HOME.getMenuString());
-        return Integer.parseInt(scanner.nextLine());
-    }
-
-    public static String inputData(Scanner scanner) {
-        return scanner.nextLine();
+    public void welcome() {
+		System.out.println("\t     ₍ᐢ｡ ˬ ｡ᐢ₎\n\t   보름 한 책");
+	}
+	public int login(Scanner scanner) {
+		System.out.println("");
+		System.out.println("1. 회원가입");
+		System.out.println("2. 로그인");
+		System.out.println("");
+		System.out.print("메뉴를 선택하세요> ");
+		return Integer.parseInt(scanner.nextLine());
+		
+	}
+	public int mainManu(Scanner scanner) {
+		System.out.println("");
+		System.out.println("1. 현재 챌린지 2. 다음 챌린지 \n3. 이전 페이지 4. 로그아웃");
+		System.out.println("");
+		System.out.print("메뉴를 선택하세요> ");
+		return Integer.parseInt(scanner.nextLine());
+		
     }
 
 }

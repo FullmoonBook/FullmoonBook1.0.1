@@ -19,13 +19,12 @@ public class SignController {
 
     public HomeMenu signIn(Scanner scanner) throws Exception {
     	MemberVO vo = view.inputLoginInfo(scanner);
-    	MemberVO custom = service.findUser(vo);
-        // 세션에 로그인 정보 저장
-        if (custom != null) {
-            session.setId(custom.getId());
-            session.setPw(custom.getPw());
+    	MemberVO member = service.findUser(vo);
+        if (member != null) {
+            session.setId(member.getId());
+            session.setPw(member.getPw());
         }
-        return view.resultLogin(custom);
+        return view.resultLogin(member);
     }
     public HomeMenu signOut() {
         // 세션 초기화

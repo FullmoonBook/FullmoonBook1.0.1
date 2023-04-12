@@ -18,6 +18,7 @@ public class JoinController {
         boolean flag = true;
         while (flag) {
             MemberVO vo = view.inputJoinInfo(scanner);
+            
             if (vo == null) {
                 flag = false;
             } else {

@@ -12,6 +12,6 @@ public class SignService {
     private SignDAO dao = SignDAO.getInstance();
 
     public MemberVO findUser(MemberVO vo) throws Exception {
-      return vo;
+      return dao.findUser(vo);
     }
 }
