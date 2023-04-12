@@ -13,7 +13,7 @@ public class BookView {
 	}
 
 	public void welcome() {
-		System.out.println("\t  ₍ᐢ｡ ˬ ｡ᐢ₎\n\t보름 한 책");
+		System.out.println("\t     ₍ᐢ｡ ˬ ｡ᐢ₎\n\t   보름 한 책");
 		
 
 	}

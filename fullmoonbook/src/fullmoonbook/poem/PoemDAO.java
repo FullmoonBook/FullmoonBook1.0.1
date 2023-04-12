@@ -19,7 +19,7 @@ public class PoemDAO {
 //	}
 	private static PoemDAO instance = new PoemDAO();
 
-	private PoemDAO() {
+	public PoemDAO() {
 	}
 
 	public static PoemDAO getInstance() {
