@@ -26,10 +26,10 @@ public class JoinDAO {
 		StringBuilder builder = new StringBuilder();
 		builder.append("    INSERT INTO member (");
 		builder.append("        id,");
-		builder.append("        pw,");
+		builder.append("        pw");
 		builder.append("    ) VALUES (");
 		builder.append("        ?,");
-		builder.append("        ?,");
+		builder.append("        ?");
 		builder.append("    )");
 		String sql = builder.toString();
 		PreparedStatement statement = connection.prepareStatement(sql);

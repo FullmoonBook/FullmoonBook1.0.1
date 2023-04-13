@@ -52,10 +52,10 @@ public class JoinView {
         }
         return true;
     }
-    public void printCustomerInfo(MemberVO vo) {
-        System.out.printf("아이디: %d\n", vo.getId());
-        System.out.printf("이름: %s\n", vo.getNick());
-    }
+//    public void printCustomerInfo(MemberVO vo) {
+//        System.out.printf("아이디: %d\n", vo.getId());
+//        System.out.printf("이름: %s\n", vo.getNick());
+//    }
 
     public void resultModifyInfo(int result) {
         if (result > 0) {

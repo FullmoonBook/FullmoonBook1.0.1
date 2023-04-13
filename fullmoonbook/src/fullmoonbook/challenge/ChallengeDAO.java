@@ -64,11 +64,8 @@ public class ChallengeDAO {
 		return vo;
 	}
 
-	public int insertChallengeStatus(String id, String status, int goal) {
-		return 0;
-	}
 
-	public ChallengeVO insertChallengeStatus(ChallengeVO vo) throws Exception {
+	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
 				"java");
 		StringBuilder builder = new StringBuilder();
@@ -86,30 +83,19 @@ public class ChallengeDAO {
 		String sql = builder.toString();
 
 		PreparedStatement statement = connection.prepareStatement(sql);
-		System.out.println(sql + "dao1");
-		System.out.println(sql + vo + "dao2");
-
+	
 		statement.setString(1, vo.getId());
 		statement.setString(2, vo.getBookNo());
 		statement.setString(3, vo.getStatus());
 		statement.setInt(4, vo.getGoal());
 
-		ResultSet resultSet = statement.executeQuery();
 		
-		ChallengeVO vo1 = null;
-		
-		if (resultSet.next()) {
-			String id = resultSet.getString("id");
-			String bookNo = resultSet.getString("book_no");
-			String status = resultSet.getString("status");
-			int goal = resultSet.getInt("goal");
-			vo1 = new ChallengeVO(id, bookNo, status, goal);
-		}
-		
-		resultSet.close();
+		int count = statement.executeUpdate();
+		System.out.println(count);
 		statement.close();
 		connection.close();
-		return vo1;
+	
+		return count;
 	}
 
 	public ChallengeVO getChallenger(String searchBookNo) throws Exception {
