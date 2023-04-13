@@ -25,7 +25,6 @@ public class FrontController {
 	private ReviewController reviewController = ReviewController.getInstance();
 	private SignController signController = SignController.getInstance();
 
-
 	private BookView bookView = BookView.getInstance();
 	private ChallengeView challengeView = ChallengeView.getInstance();// View 호출
 	private MainView mainView = MainView.getInstance();
@@ -50,7 +49,7 @@ public class FrontController {
 	public void process() throws Exception {
 
 		mainView.welcome();
-		poemView.getPoems();
+		//poemView.getPoems();
 		login = mainView.login(scanner);
 
 		switch (login) {
@@ -60,13 +59,15 @@ public class FrontController {
 			break;
 
 		case 2:
-			signView.inputLoginInfo(scanner);
+			MemberVO vo = signController.signIn(scanner);
+			System.out.println(vo);
+		//	signView.inputLoginInfo(vo);
 //			if(vo != null) {
 //				= signController.signIn(vo);
 //			}
 			
-			ChallengeVO vo = challController.insertChallengeStatus(scanner);
-			challengeView.getChallenge(vo);
+			ChallengeVO vo1 = challController.insertChallengeStatus(scanner);
+			challengeView.getChallenge(vo1);
 
 			break;
 

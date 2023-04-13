@@ -41,7 +41,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", nick=" + nick + "]";
+		return "MemberVO [id=" + id + ", pw=" + pw;
 	}
 
 	public void setNick(String nick) {

@@ -20,11 +20,9 @@ public class JoinView {
                 if (id.length() < 1 || id.length() > 10) {
                     throw new NumberFormatException();
                 }
-                System.out.print("이름: ");
-                String nick = scanner.nextLine();
                 System.out.print("패스워드: ");
                 String pw = scanner.nextLine();
-                vo = new MemberVO(id, nick, pw);
+                vo = new MemberVO(id, pw);
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("아이디는 10자리 이하 문자 또는 숫자만 가능합니다.");

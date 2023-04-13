@@ -67,7 +67,7 @@ public class ChallengeVO {
 		this.status = status;
 	}
 	public int getGoal() {
-		return nowPage / page;
+		return goal;
 	}
 	public void setGoal(int goal) {
 		this.goal = goal;

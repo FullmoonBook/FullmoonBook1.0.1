@@ -40,7 +40,8 @@ public class SignDAO {
 		builder.append(" FROM");
 		builder.append("    member");
 		builder.append(" WHERE");
-		builder.append("    rtrim(id) = ? AND pw = ?");
+		builder.append("    id = ? AND pw = ?");
+//		builder.append("    rtrim(id) = ? AND pw = ?");
 		String sql = builder.toString();
 
 		PreparedStatement statement = connection.prepareStatement(sql);

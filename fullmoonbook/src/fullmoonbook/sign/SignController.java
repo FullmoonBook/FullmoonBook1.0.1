@@ -19,6 +19,7 @@ public class SignController {
 
     public MemberVO signIn(Scanner scanner) throws Exception {
     	MemberVO vo = view.inputLoginInfo(scanner);
+    	System.out.println(vo + "sign");
     	MemberVO member = service.findUser(vo);
         if (member != null) {
             session.setId(member.getId());
