@@ -28,11 +28,10 @@ public class MainView {
 
 	public int mainManu(Scanner scanner) {
 		System.out.println("");
-		System.out.println("1. 현재 챌린지 2. 다음 챌린지 \n3. 이전 페이지 4. 로그아웃");
+		System.out.println("1. 현재 챌린지 2. 다음 챌린지 3. 로그아웃");
 		System.out.println("");
 		System.out.print("메뉴를 선택하세요> ");
 		return Integer.parseInt(scanner.nextLine());
-
 	}
 
 	public int nowBookManu(Scanner scanner) {

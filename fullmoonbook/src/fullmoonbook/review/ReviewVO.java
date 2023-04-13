@@ -19,6 +19,12 @@ public class ReviewVO {
 		this.grade = grade;
 		
 	}
+	public ReviewVO( String content, int grade) {
+
+		this.content = content;
+		this.grade = grade;
+		
+	}
 	public String getId() {
 		return id;
 	}

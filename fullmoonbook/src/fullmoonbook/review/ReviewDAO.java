@@ -24,7 +24,7 @@ public class ReviewDAO {
 
 	private static ReviewDAO instance = new ReviewDAO();
 
-	private ReviewDAO() {
+	public ReviewDAO() {
 	}
 
 	public static ReviewDAO getInstance() {
