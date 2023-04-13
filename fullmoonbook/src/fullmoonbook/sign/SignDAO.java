@@ -50,10 +50,8 @@ public class SignDAO {
 		ResultSet resultSet = statement.executeQuery();
 		MemberVO member = null;
 		if (resultSet.next()) {
-			System.out.println("resultset if 1");
 			String id = resultSet.getString("id");
 			String pw = resultSet.getString("pw");
-		//	String nick = resultSet.getString("nick");
 			member = new MemberVO(id, pw);
 		}
 		resultSet.close();

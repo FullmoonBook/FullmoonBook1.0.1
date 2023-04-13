@@ -23,9 +23,7 @@ public class SignController {
         if (member != null) {
             session.setId(member.getId());
             session.setPw(member.getPw());
-            System.out.println(session + "session");
         }
-        System.out.println(session);
         return view.resultLogin(member);
     }
     public HomeMenu signOut() {

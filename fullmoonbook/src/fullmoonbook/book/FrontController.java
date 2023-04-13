@@ -8,6 +8,7 @@ import fullmoonbook.challenge.ChallengeView;
 import fullmoonbook.common.MainView;
 import fullmoonbook.join.JoinController;
 import fullmoonbook.join.JoinView;
+import fullmoonbook.join.MemberVO;
 import fullmoonbook.poem.PoemController;
 import fullmoonbook.poem.PoemView;
 import fullmoonbook.review.ReviewController;
@@ -46,34 +47,30 @@ public class FrontController {
 	}
 
 	public void process() throws Exception {
-//		view.getChallenge(vo);
-//		while (true) {
-//			view.getThisChallenge();
-//			//			private ChallengeView view = new ChallengeView();
-//			//			private ChallengeController controller = ChallengeController.getInstance();
-//			//			ChallengeVO book = controller.getChallenge("0003");
-//
-//			//			view.getChallenge(book);
-//		}
 		mainView.welcome();
 		poemView.getPoems();
 		login = mainView.login(scanner);
 
-		switch (login) {
-		case 1:
-			joinController.join(scanner);
-			mainView.welcome();
-			login = mainView.login(scanner);
-
-		case 2:
-			signController.signIn(scanner);
-			login = 3;
-			break;
-		case 3:
-			mainView.mainManu(scanner);
-			break;
-
-		}
+//		switch (login) {
+//		case 1:
+//			joinController.join(scanner);
+//			mainView.welcome();
+//			// mainView.login(scanner);
+//			break;
+//
+//		case 2:
+//			System.out.println("2");
+////			signView.inputLoginInfo(scanner);
+////			if(vo != null) {
+////				= signController.signIn(vo);
+////			}
+//			break;
+////			
+//		case 3:
+//			mainView.mainManu(scanner);
+//			break;
+//
+//		}
 
 		// while (run) {
 		// int menu = mainView.mainManu(scanner);
@@ -102,3 +99,13 @@ public class FrontController {
 		// }
 	}
 }
+
+//		view.getChallenge(vo);
+//		while (true) {
+//			view.getThisChallenge();
+//			//			private ChallengeView view = new ChallengeView();
+//			//			private ChallengeController controller = ChallengeController.getInstance();
+//			//			ChallengeVO book = controller.getChallenge("0003");
+//
+//			//			view.getChallenge(book);
+//		}
