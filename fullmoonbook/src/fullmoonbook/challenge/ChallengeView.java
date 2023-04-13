@@ -3,11 +3,11 @@ package fullmoonbook.challenge;
 import java.util.Scanner;
 
 public class ChallengeView {
-	public static void main(String[] args) {
-	
-		
-		
-	}
+//	public static void main(String[] args) {
+//	
+//		
+//		
+//	}
 	
 	private static ChallengeView instance = new ChallengeView();//싱글톤(객체 1개만 생성)
 	public ChallengeView() {
@@ -18,7 +18,7 @@ public class ChallengeView {
 	//Scanner scanner = new Scanner(System.in);//이거 안써도 되나요??? (FrontController에서 쓴다!)
 	//이거 왜 private으로 해야 함??(아래꺼)
 	
-	private ChallengeController controller = ChallengeController.getInstance();
+	private ChallengeController controller = ChallengeController.getInstance(); //controller 호출
 	
 	public void getChallenge(ChallengeVO vo) throws Exception {
 		System.out.println(vo.printNA());

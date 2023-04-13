@@ -58,11 +58,13 @@ public class ChallengeDAO {
 		resultSet.close();
 		statement.close();
 		connection.close();
-		return vo;		
-		
-		
+		return vo;			
 	}
-	public ChallengeVO insertChallengeStatus(String status) throws Exception {
+	
+	public int insertChallengeStatus(String id, String status, int goal) {
+		return 0;
+	}
+	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("INSERT INTO challenge (");
@@ -72,11 +74,24 @@ public class ChallengeDAO {
 		builder.append("    goal");
 		builder.append(") VALUES (");
 		builder.append("    ?,"); //현재 아이디로 불러와져야 함.
-		builder.append("    '0003',");
+		builder.append("    '0003',");//현재 챌린지 책... (이건 scanner로 못받겠다)
 		builder.append("    ?,");
-		builder.append("    ?");
+		builder.append("    ?"); //goal은 받는 값이 아니지만 계산해서 넣어야하니까!
 		builder.append(")");
+		String sql = builder.toString();
+
+		PreparedStatement statement = connection.prepareStatement(sql);
 		
+		statement.setString(1, vo.getId());
+		statement.setString(2, vo.getStatus());
+		statement.setInt(3, vo.getGoal());
+
+		int count = statement.executeUpdate();
+		statement.close();
+		connection.close();
+		return count;
 	}
+	
+	
 	
 }
