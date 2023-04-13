@@ -8,57 +8,57 @@ import java.sql.ResultSet;
 import fullmoonbook.join.MemberVO;
 
 public class SignDAO {
-	public static void main(String[] args) {
-		SignDAO dao = new SignDAO();
-		MemberVO vo2 = new MemberVO("60", "60");
-	dao.findUser(vo2);
-		
-		
+//	public static void main(String[] args) {
+//		SignDAO dao = new SignDAO();
+//		MemberVO vo2 = new MemberVO("60", "60");
+//		try {
+//			dao.findUser(vo2);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+
+	private static SignDAO instance = new SignDAO();
+
+	public static SignDAO getInstance() {
+		return instance;
 	}
-    private static SignDAO instance = new SignDAO();
-    public static SignDAO getInstance() {
-        return instance;
-    }
-    private SignDAO() {}
 
-    public MemberVO findUser(MemberVO vo) {
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
-            String user = "pc26_4";
-            String password = "java";
-            Connection connection = DriverManager.getConnection(url, user, password);
-            StringBuilder builder = new StringBuilder();
-            builder.append("SELECT");
-            builder.append("    id,");
-            builder.append("    pw");
-            builder.append(" FROM");
-            builder.append("    member");
-            builder.append(" WHERE");
-            builder.append("    id = ? AND pw = ?");
-            String sql = builder.toString();
-         
-            PreparedStatement statement = connection.prepareStatement(sql);
-            System.out.println(sql);
-            statement.setString(1, vo.getId());
-            statement.setString(2, vo.getPw());
-            System.out.println(sql+vo);
+	private SignDAO() {
+	}
 
-            ResultSet resultSet = statement.executeQuery();
-            
+	public MemberVO findUser(MemberVO vo) throws Exception {
 
-            if (resultSet.next()) {
-                MemberVO mem = new MemberVO();
-                mem.setId(resultSet.getString("id"));
-                mem.setPw(resultSet.getString("pw"));
-                return mem;
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            System.out.println("데이터베이스 연결에 실패했습니다. 원인: " + e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
-    }
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
+		String user = "pc26_4";
+		String password = "java";
+		Connection connection = DriverManager.getConnection(url, user, password);
+		StringBuilder builder = new StringBuilder();
+		builder.append("SELECT");
+		builder.append("    id,");
+		builder.append("    pw");
+		builder.append(" FROM");
+		builder.append("    member");
+		builder.append(" WHERE");
+		builder.append("    rtrim(id) = ? AND pw = ?");
+		String sql = builder.toString();
+
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, vo.getId());
+		statement.setString(2, vo.getPw());
+
+		ResultSet resultSet = statement.executeQuery();
+		MemberVO member = null;
+		if (resultSet.next()) {
+			System.out.println("resultset if 1");
+			String id = resultSet.getString("id");
+			String pw = resultSet.getString("pw");
+		//	String nick = resultSet.getString("nick");
+			member = new MemberVO(id, pw);
+		}
+		resultSet.close();
+		statement.close();
+		connection.close();
+		return member;
+	}
 }

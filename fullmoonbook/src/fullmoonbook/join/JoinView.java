@@ -17,7 +17,7 @@ public class JoinView {
             try {
                 System.out.print("아이디: ");
                 String id = scanner.nextLine();
-                if (id.length() < 1 || id.length() > 2) {
+                if (id.length() < 1 || id.length() > 10) {
                     throw new NumberFormatException();
                 }
                 System.out.print("이름: ");
@@ -27,7 +27,7 @@ public class JoinView {
                 vo = new MemberVO(id, nick, pw);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("아이디는 2자리 이하 숫자만 가능합니다.");
+                System.out.println("아이디는 10자리 이하 문자 또는 숫자만 가능합니다.");
             } catch (Exception e) {
                 System.out.println("회원 가입 도중 오류가 발생하였습니다.");
 

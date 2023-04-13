@@ -17,4 +17,5 @@ public class BookstoreApplication {
     public static MemberVO getSession() {
         return session;
     }
+    
 }

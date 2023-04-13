@@ -45,10 +45,17 @@ public class FrontController {
 		switch (login) {
 		case 1:
 			joinController.join(scanner);
-			break;
+			mainView.welcome();
+			login = mainView.login(scanner);
+			
 		case 2:
 			signController.signIn(scanner);
+			login = 3;
 			break;
+		case 3:
+			mainView.mainManu(scanner);
+			break;
+			
 
 		}
 

@@ -17,13 +17,15 @@ public class SignController {
     private SignView view = SignView.getInstance();
     private MemberVO session = BookstoreApplication.getSession();
 
-    public HomeMenu signIn(Scanner scanner) throws Exception {
+    public MemberVO signIn(Scanner scanner) throws Exception {
     	MemberVO vo = view.inputLoginInfo(scanner);
     	MemberVO member = service.findUser(vo);
         if (member != null) {
             session.setId(member.getId());
             session.setPw(member.getPw());
+            System.out.println(session + "session");
         }
+        System.out.println(session);
         return view.resultLogin(member);
     }
     public HomeMenu signOut() {
