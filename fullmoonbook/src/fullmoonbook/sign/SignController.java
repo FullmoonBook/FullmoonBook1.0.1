@@ -2,7 +2,7 @@ package fullmoonbook.sign;
 
 import java.util.Scanner;
 
-import fullmoonbook.common.BookstoreApplication;
+import fullmoonbook.common.BookApplication;
 import fullmoonbook.common.HomeMenu;
 import fullmoonbook.join.MemberVO;
 
@@ -15,7 +15,7 @@ public class SignController {
 
     private SignService service = SignService.getInstance();
     private SignView view = SignView.getInstance();
-    private MemberVO session = BookstoreApplication.getSession();
+    private MemberVO session = BookApplication.getSession();
 
     public MemberVO signIn(Scanner scanner) throws Exception {
     	MemberVO vo = view.inputLoginInfo(scanner);

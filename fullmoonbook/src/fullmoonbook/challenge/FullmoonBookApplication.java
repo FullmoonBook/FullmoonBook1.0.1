@@ -1,10 +1,12 @@
-package fullmoonbook;
+package fullmoonbook.challenge;
+
+import fullmoonbook.book.FrontController;
 
 public class FullmoonBookApplication {
 	
 //	private static MemberVO session = new MemberVO();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		FrontController main = FrontController.getInstance(); //FrontController 호출
 			
 		main.process(); //FrontController 실행

@@ -1,10 +1,12 @@
 package fullmoonbook.common;
 
 import fullmoonbook.book.FrontController;
+import fullmoonbook.challenge.ChallengeVO;
 import fullmoonbook.join.MemberVO;
 
-public class BookstoreApplication {
+public class BookApplication {
     private static MemberVO session = new MemberVO();
+    private static ChallengeVO session1 = new ChallengeVO();
 
     public static void main(String[] args) throws Exception {
         new FrontController().process();
@@ -16,6 +18,9 @@ public class BookstoreApplication {
      */
     public static MemberVO getSession() {
         return session;
+    }
+    public static ChallengeVO challengeGetSession() {
+        return session1;
     }
     
 }

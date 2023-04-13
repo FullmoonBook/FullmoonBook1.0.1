@@ -20,8 +20,13 @@ public class ChallengeVO {
 		this.bookName = bookName;
 		this.author = author;
 	}
-	public ChallengeVO(String id, String status, int goal) {
+	public ChallengeVO(String status) {
+		this.status = status;
+	}
+	public ChallengeVO(String id, String bookNo, String status, int goal) {
+	
 		this.id = id;
+		this.bookNo = bookNo;
 		this.status = status; 
 		this.goal = goal;
 	}

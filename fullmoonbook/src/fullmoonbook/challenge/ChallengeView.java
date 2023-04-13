@@ -2,6 +2,8 @@ package fullmoonbook.challenge;
 
 import java.util.Scanner;
 
+import fullmoonbook.join.MemberVO;
+
 public class ChallengeView {
 //	public static void main(String[] args) {
 //	
@@ -30,19 +32,28 @@ public class ChallengeView {
 	public void getThisBookNo() throws Exception {
 		System.out.println(controller.getChallenge("0003"));
 	}
-
+	//public void insertChallengeStatus(Scanner scanner) throws Exception {
+	//	System.out.println("\t  <이번 보름 챌린지>");
+	//}
 	
-	public ChallengeVO startChallenge(Scanner scanner) {
-		System.out.println("도전하겠습니까? (Y/N)");
-		String status = scanner.nextLine();
-		return new ChallengeVO(status);
-	}
+    public static ChallengeVO insertChallengeStatus(Scanner scanner) {
+        System.out.print("도전하시겠습니까?");
+        String status = scanner.nextLine();
+        System.out.println(status + "  challview");
+        return new ChallengeVO(status);
+    }
 	
-	public ChallengeVO getPage(Scanner scanner) {
-		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165)");
-		int nowPage = Integer.parseInt(scanner.nextLine());
-		return new ChallengeVO(nowPage);
-	}
+//	public ChallengeVO startChallenge(Scanner scanner) {
+//		System.out.println("도전하겠습니까? (Y/N)");
+//		String status = scanner.nextLine();
+//		return new ChallengeVO(status);
+//	}
+//	
+//	public ChallengeVO getPage(Scanner scanner) {
+//		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165)");
+//		int nowPage = Integer.parseInt(scanner.nextLine());
+//		return new ChallengeVO(nowPage);
+//	}
 	
 //	public void ChallengeVO confirmChallenger( ) {
 //		System.out.println();
