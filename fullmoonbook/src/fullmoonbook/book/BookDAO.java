@@ -9,22 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDAO {
-//	public static void main(String[] args) {
-//		try {
-//			BookDAO dao = new BookDAO();
-//			BookVO book1 = dao.getNowChallenge("0003");
-//			BookVO book2 = dao.getNextChallenge("0004");
-//
-//			System.out.println(book1.printBook(false));
-//			System.out.println("");
-//			System.out.println(book2.printBook(true));
-//
-//
-//		} catch (Exception e) {
-//			System.err.println("에러" + e.getMessage());
-//		}
-//
-//	}
+	public static void main(String[] args) {
+		try {
+			BookDAO dao = new BookDAO();
+			BookVO book1 = dao.getNowChallenge("0003");
+			BookVO book2 = dao.getNextChallenge("0004");
+
+			System.out.println(book1.printA());
+
+
+
+		} catch (Exception e) {
+			System.err.println("에러" + e.getMessage());
+		}
+
+	}
 
 	private static BookDAO instance = new BookDAO();
 

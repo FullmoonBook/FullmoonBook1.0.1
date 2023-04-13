@@ -113,18 +113,19 @@ public class BookVO {
 		this.challenger = challenger;
 	}
 
-//	public String toString() {
-//		return String.format(
-//				"%s\n%s\n%s, %s, %s, %s \n챌린지 기간: %s \n챌린저: %s명",
-//				 bookName, subtitle, author, page, genre, publisher, period, challenger);
-//	}
+	public String printA() {
+		return String.format("%s\n%s", bookName, author);
+
+	}
+
 	public String printBook(boolean flag) {
 		if (flag) {
-			return String.format("\t    %s\n\n %s\n   %s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page, genre,
-					publisher, period);
+			return String.format("\t    %s\n\n %s\n   %s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
+					genre, publisher, period);
 		} else {
-			return String.format("\t   %s\n\n %s\n%s, %s쪽, %s, %s \n    기간: %s\n\t    챌린저: %s명", bookName, subtitle, author, page,
-					genre, publisher, period, challenger);
+			return String.format("\t   %s\n\n %s\n%s, %s쪽, %s, %s \n    기간: %s\n\t    챌린저: %s명", bookName, subtitle,
+					author, page, genre, publisher, period, challenger);
 		}
 	}
+
 }

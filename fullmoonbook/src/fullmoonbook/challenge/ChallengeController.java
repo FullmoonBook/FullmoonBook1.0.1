@@ -7,31 +7,34 @@ import fullmoonbook.join.MemberVO;
 
 public class ChallengeController {
 	private static ChallengeController instance = new ChallengeController();
-    private ChallengeVO session1 = BookApplication.challengeGetSession();
+	private ChallengeVO session1 = BookApplication.challengeGetSession();
 
 	private ChallengeController() {
 	}
+
 	public static ChallengeController getInstance() {
 		return instance;
 	}
-	
+
 	private ChallengeService service = ChallengeService.getInstance();
-	
+
 	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
-		return service.getChallenge(searchBookNo);		
-	} 
+		return service.getChallenge(searchBookNo);
+	}
+
 	public ChallengeVO insertChallengeStatus(Scanner scanner) throws Exception {
-		ChallengeVO vo = ChallengeView.insertChallengeStatus(scanner);
-		if (vo!= null) {
+		ChallengeView challengeView = ChallengeView.getInstance();
+		ChallengeVO vo = challengeView.insertChallengeStatus(scanner);
+		if (vo != null) {
 			session1.setStatus(vo.getStatus());
 			System.out.println(vo.getStatus());
 
-		//	session.setGoal(0);
+			// session.setGoal(0);
 
 		} else {
 			System.out.println("challcon 저장 안 됨");
 		}
-		return service.insertChallengeStatus(vo);	
+		return service.insertChallengeStatus(vo);
 	}
 }
 

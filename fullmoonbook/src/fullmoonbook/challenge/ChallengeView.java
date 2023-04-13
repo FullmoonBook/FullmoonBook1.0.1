@@ -36,7 +36,7 @@ public class ChallengeView {
 	//	System.out.println("\t  <이번 보름 챌린지>");
 	//}
 	
-    public static ChallengeVO insertChallengeStatus(Scanner scanner) {
+    public ChallengeVO insertChallengeStatus(Scanner scanner) {
         System.out.print("도전하시겠습니까?");
         String status = scanner.nextLine();
         System.out.println(status + "  challview");

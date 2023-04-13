@@ -33,7 +33,6 @@ public class ChallengeVO {
 		this.goal = goal;
 	}
 	public ChallengeVO(String id, String bookNo, String status, int goal) {
-	
 		this.id = id;
 		this.bookNo = bookNo;
 		this.status = status; 

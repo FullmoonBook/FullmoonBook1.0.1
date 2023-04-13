@@ -18,5 +18,8 @@ public class BookController {
 	public BookVO getNextChallenge(String nextChallengeBookNo) throws Exception {
 		return service.getNextChallenge(nextChallengeBookNo);
 	}
+	public BookVO getChallenge(String nowChallengeBookNo) throws Exception {
+		return service.getNowChallenge(nowChallengeBookNo);
+	}
 
 }
