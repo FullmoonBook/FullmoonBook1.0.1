@@ -25,7 +25,9 @@ public class ChallengeView {
 	} 
 	
 	public void getThisChallenge() throws Exception {
-		System.out.println("<이번 보름 챌린지>");
+		System.out.println("\t  <이번 보름 챌린지>");
+	}
+	public void getThisBookNo() throws Exception {
 		System.out.println(controller.getChallenge("0003"));
 	}
 
@@ -38,13 +40,14 @@ public class ChallengeView {
 	
 	public ChallengeVO getPage(Scanner scanner) {
 		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165)");
-		int page = Integer.parseInt(scanner.nextLine());
-		return new ChallengeVO(page);
+		int nowPage = Integer.parseInt(scanner.nextLine());
+		return new ChallengeVO(nowPage);
 	}
 	
-	public ChallengeVO getGoal() {
-		 / vo.printP(); 
-	}
+//	public void ChallengeVO confirmChallenger( ) {
+//		System.out.println();
+//	}
+
 	
 
 	

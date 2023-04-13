@@ -53,7 +53,10 @@ public class ChallengeDAO {
 		if (resultSet.next()) {
 			String bookName = resultSet.getString("book_name");
 			String author = resultSet.getString("author");
-			vo = new ChallengeVO(bookName, author);
+			String page = resultSet.getString("page");
+			String challenger = resultSet.getString("challenger");
+			
+			vo = new ChallengeVO(bookName, author, page, challenger);
 		}
 		resultSet.close();
 		statement.close();
@@ -90,6 +93,41 @@ public class ChallengeDAO {
 		statement.close();
 		connection.close();
 		return count;
+	}
+	
+public ChallengeVO getChallenger(String searchBookNo) throws Exception {
+		
+		//System.out.println(searchBookNo);//로그
+	
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
+		StringBuilder builder = new StringBuilder();
+		builder.append("SELECT");
+		builder.append("    COUNT(*)");
+		builder.append(" FROM");
+		builder.append("    challenge");
+		builder.append(" WHERE");
+		builder.append("    book_no = ? ");
+			
+		String sql = builder.toString();
+//		System.out.println(sql + searchBookNo );
+		PreparedStatement statement = connection.prepareStatement(sql);
+		
+		statement.setString(1, searchBookNo);
+		System.out.println(sql);
+
+		
+		ResultSet resultSet = statement.executeQuery();
+		ChallengeVO vo = null;
+		if (resultSet.next()) {
+			String bookName = resultSet.getString("book_name");
+			String author = resultSet.getString("author");
+			vo = new ChallengeVO(bookName, author);
+		}
+		resultSet.close();
+		statement.close();
+		connection.close();
+		return vo;			
 	}
 	
 	

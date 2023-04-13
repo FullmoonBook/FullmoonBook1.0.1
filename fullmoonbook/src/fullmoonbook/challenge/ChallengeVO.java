@@ -10,6 +10,7 @@ public class ChallengeVO {
 	private String bookName;
 	private String author;
 	private int page;
+	private int nowPage;
 	private int challenger;
 	
 	//생성자
@@ -19,19 +20,26 @@ public class ChallengeVO {
 		this.bookName = bookName;
 		this.author = author;
 	}
-	public ChallengeVO(int page) {
-		this.page = page; 
-	}
-	public ChallengeVO(string id, string status, int goal) {
+	public ChallengeVO(String id, String status, int goal) {
 		this.id = id;
 		this.status = status; 
 		this.goal = goal;
 	}
 	
+	public ChallengeVO(String bookName, String author, int page, int challenger) {
+		this.bookName = bookName;
+		this.author = author;
+		this.page = page; 
+		this.challenger = challenger;
+	}
+	
 	//getter setter
 	public String getId() {
 		return id;
-	}	
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getBookNo() {
 		return bookNo;
 	}
@@ -45,7 +53,7 @@ public class ChallengeVO {
 		this.status = status;
 	}
 	public int getGoal() {
-		return goal;
+		return nowPage / page;
 	}
 	public void setGoal(int goal) {
 		this.goal = goal;
@@ -68,14 +76,17 @@ public class ChallengeVO {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	public int getNowPage() {
+		return nowPage;
+	}
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
 	public int getChallenger() {
 		return challenger;
 	}
 	public void setChallenger(int challenger) {
 		this.challenger = challenger;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	
 	//프린트 출력 형식
