@@ -18,6 +18,13 @@ import fullmoonbook.sign.SignView;
 public class FrontController {
 	private static FrontController instance = new FrontController(); // FrontController 싱글톤 생성
 
+	public FrontController() {
+	}
+
+	public static FrontController getInstance() {
+		return instance;
+	}
+
 	private BookController bookController = BookController.getInstance();
 	private ChallengeController challController = ChallengeController.getInstance(); // controller 호출
 	private JoinController joinController = JoinController.getInstance();
@@ -26,55 +33,51 @@ public class FrontController {
 	private SignController signController = SignController.getInstance();
 
 	private BookView bookView = BookView.getInstance();
-	private ChallengeView challengeView = ChallengeView.getInstance();// View 호출
+	private ChallengeView challengeView = ChallengeView.getInstance();
 	private MainView mainView = MainView.getInstance();
 	private JoinView joinView = JoinView.getInstance();
 	private PoemView poemView = PoemView.getInstance();
 //	private ReviewView reviewView = ReviewView.getInstance();
 	private SignView signView = SignView.getInstance();
 
-	private Scanner scanner = new Scanner(System.in); // Scanner 생성을 여기서 함.
-
-	// ChallengeVO vo = new ChallengeVO();//VO 객체 생성
+	private Scanner scanner = new Scanner(System.in); 
 	public boolean run = true;
 	int login = 0;
-
-	public FrontController() {
-	}
-
-	public static FrontController getInstance() {
-		return instance;
-	}
 
 	public void process() throws Exception {
 
 		mainView.welcome();
-		//poemView.getPoems();
+		poemView.getPoems();
 		login = mainView.login(scanner);
 
 		switch (login) {
 		case 1:
 			joinController.join(scanner);
-			// mainView.login(scanner);
+			//mainView.login(scanner);
 			break;
 
 		case 2:
 			MemberVO vo = signController.signIn(scanner);
-			System.out.println(vo);
-		//	signView.inputLoginInfo(vo);
+//			System.out.println(vo);
+//			 signView.inputLoginInfo(vo);
 //			if(vo != null) {
 //				= signController.signIn(vo);
 //			}
-			
-			ChallengeVO vo1 = challController.insertChallengeStatus(scanner);
-			challengeView.getChallenge(vo1);
+
+//			ChallengeVO vo1 = challController.insertChallengeStatus(scanner);
+//			challengeView.getChallenge(vo1);
+			ChallengeVO iMember = challengeView.insertChallengeStatus(scanner);
+			if (iMember != null) {
+				int insertStatus = challController.insertChallengeStatus(iMember);
+				challengeView.insertStatusResult(insertStatus);
+			}
 
 			break;
 
-		case 3:
-			challengeView.insertChallengeStatus(scanner);
-			mainView.mainManu(scanner);
-			break;
+//		case 3:
+//			challengeView.insertChallengeStatus(scanner);
+//			mainView.mainManu(scanner);
+//			break;
 
 		}
 

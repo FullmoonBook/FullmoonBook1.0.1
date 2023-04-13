@@ -27,14 +27,14 @@ public class ChallengeService {
 		return dao.getChallenge(searchBookNo);
 	}
 
-	public ChallengeVO insertChallengeStatus(ChallengeVO vo) throws Exception {
+	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
 		ChallengeVO vo1 = new ChallengeVO();
 		vo1.setId(BookApplication.getSession().getId());
 		vo1.setBookNo("0003");
 		vo1.setStatus(BookApplication.challengeGetSession().getStatus());
 		vo1.setGoal(0);
 		
-		System.out.println(vo1);
+		System.out.println(vo1 + "service");
 		return dao.insertChallengeStatus(vo1);
 	}
 }

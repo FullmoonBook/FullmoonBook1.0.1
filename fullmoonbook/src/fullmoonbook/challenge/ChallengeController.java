@@ -22,10 +22,10 @@ public class ChallengeController {
 		return service.getChallenge(searchBookNo);
 	}
 
-	public ChallengeVO insertChallengeStatus(Scanner scanner) throws Exception {
+	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
 		ChallengeView challengeView = ChallengeView.getInstance();
-		ChallengeVO vo = challengeView.insertChallengeStatus(scanner);
-		if (vo != null) {
+//		ChallengeVO vo1 = challengeView.insertChallengeStatus(scanner);
+		if (challengeView != null) {
 			session1.setStatus(vo.getStatus());
 			System.out.println(vo.getStatus());
 
@@ -37,6 +37,7 @@ public class ChallengeController {
 		return service.insertChallengeStatus(vo);
 	}
 }
+
 
 //public MemberVO signIn(Scanner scanner) throws Exception {
 //	MemberVO vo = view.inputLoginInfo(scanner);
