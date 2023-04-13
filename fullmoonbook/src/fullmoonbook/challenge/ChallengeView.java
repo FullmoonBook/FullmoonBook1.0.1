@@ -40,8 +40,10 @@ public class ChallengeView {
 	public ChallengeVO insertChallengeStatus(Scanner scanner) {
 		System.out.print("도전하시겠습니까? (Y/N)");
 		String status = scanner.nextLine();
-		System.out.println(status + "  challview");
-		return new ChallengeVO(status);
+		if(status.equals("y")) {
+			return new ChallengeVO(status);
+		} 
+		return null;
 	}
 
 	public void insertStatusResult(int count) {

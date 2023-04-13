@@ -58,18 +58,13 @@ public class FrontController {
 
 		case 2:
 			MemberVO vo = signController.signIn(scanner);
-//			System.out.println(vo);
-//			 signView.inputLoginInfo(vo);
-//			if(vo != null) {
-//				= signController.signIn(vo);
-//			}
 
-//			ChallengeVO vo1 = challController.insertChallengeStatus(scanner);
-//			challengeView.getChallenge(vo1);
 			ChallengeVO iMember = challengeView.insertChallengeStatus(scanner);
 			if (iMember != null) {
 				int insertStatus = challController.insertChallengeStatus(iMember);
 				challengeView.insertStatusResult(insertStatus);
+			} else if(iMember == null) {
+				System.out.println("현재 ~명의 회원이 도전 중입니다. 함께해 주세요.");
 			}
 
 			break;
@@ -108,13 +103,3 @@ public class FrontController {
 		// }
 	}
 }
-
-//		view.getChallenge(vo);
-//		while (true) {
-//			view.getThisChallenge();
-//			//			private ChallengeView view = new ChallengeView();
-//			//			private ChallengeController controller = ChallengeController.getInstance();
-//			//			ChallengeVO book = controller.getChallenge("0003");
-//
-//			//			view.getChallenge(book);
-//		}
