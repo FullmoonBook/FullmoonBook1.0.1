@@ -9,23 +9,16 @@ import java.sql.Statement;
 import java.util.List;
 
 public class ChallengeDAO {
-//	public static void main(String[] args) throws Exception {
-//		ChallengeDAO dao = new ChallengeDAO();
-//		ChallengeVO vo = dao.getChallenge("0001");
-//
-//		System.out.println(vo);//로그
-//	}
-
 	private static ChallengeDAO instance = new ChallengeDAO(); // 싱글톤
 
-	private ChallengeDAO() {
+	public ChallengeDAO() {
 	}
 
 	public static ChallengeDAO getInstance() {
 		return instance;
 	}
-	
-    //챌린지 정보 가져오기
+
+	// 챌린지 정보 가져오기
 	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
@@ -45,10 +38,10 @@ public class ChallengeDAO {
 		PreparedStatement statement = connection.prepareStatement(sql);
 
 		statement.setString(1, searchBookNo);
-	
+
 		ResultSet resultSet = statement.executeQuery();
 		ChallengeVO vo = null;
-		
+
 		if (resultSet.next()) {
 			String bookName = resultSet.getString("book_name");
 			String author = resultSet.getString("author");
@@ -62,7 +55,7 @@ public class ChallengeDAO {
 		return vo;
 	}
 
-    //
+	//
 	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
 				"java");
@@ -73,7 +66,7 @@ public class ChallengeDAO {
 		builder.append("    status,");
 		builder.append("    goal");
 		builder.append(") VALUES (");
-		builder.append("    ?,"); 
+		builder.append("    ?,");
 		builder.append("    ?,");
 		builder.append("    ?,");
 		builder.append("    ?");
@@ -81,97 +74,84 @@ public class ChallengeDAO {
 		String sql = builder.toString();
 
 		PreparedStatement statement = connection.prepareStatement(sql);
-		System.out.println(sql + "dao1");
-		System.out.println(sql + vo + "dao2");
-
 		statement.setString(1, vo.getId());
 		statement.setString(2, vo.getBookNo());
 		statement.setString(3, vo.getStatus());
 		statement.setInt(4, vo.getGoal());
 
-		//ResultSet resultSet = statement.executeQuery();
-		
-		 int count = statement.executeUpdate();
-		// resultSet.close();
-		 statement.close();
-		 connection.close();
-		 return count;
+		int count = statement.executeUpdate();
+		statement.close();
+		connection.close();
+		return count;
 
 	}
 
-//	public int updateGoal(ChallengeVO vo) throws Exception {
-//		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
-//		StringBuilder builder = new StringBuilder();
-//		builder.append("UPDATE ");
-//		builder.append("    challenge");
-//		builder.append("SET ");
-//		builder.append("    goal = ?");
-//		builder.append("WHERE ");
-//		builder.append("    id = ?"); // 현재 아이디로 불러와져야 함.
-//		builder.append("AND ");
-//		builder.append(" book_no = ? ");
-//
-//		String sql = builder.toString();
-//
-//		PreparedStatement statement = connection.prepareStatement(sql);
-//		System.out.println(sql + "dao1");
-//		System.out.println(sql + vo + "dao2");
-//
-//		statement.setString(1, vo.getId());
-//		statement.setString(2, vo.getBookNo());
-//		statement.setString(3, vo.getStatus());
-//		statement.setInt(4, vo.getGoal());
-//
-//		ResultSet resultSet = statement.executeQuery();
-//		
-//		ChallengeVO vo1 = null;
-//		
-//		if (resultSet.next()) {
-//			String id = resultSet.getString("id");
-//			String bookNo = resultSet.getString("book_no");
-//			String status = resultSet.getString("status");
-//			int goal = resultSet.getInt("goal");
-//			vo1 = new ChallengeVO(id, bookNo, status, goal);
-//		}
-//		resultSet.close();
-//		statement.close();
-//		connection.close();
-//		return vo1;
-//	}
-}
-	
+	public int updateGoal(ChallengeVO vo) throws Exception {
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+				"java");
+		StringBuilder builder = new StringBuilder();
+		builder.append("UPDATE ");
+		builder.append("    challenge ");
+		builder.append("SET ");
+		builder.append("    goal = ? ");
+		builder.append("WHERE ");
+		builder.append("    id = ? "); // 현재 아이디로 불러와져야 함.
+		builder.append("AND ");
+		builder.append(" book_no = ? ");
 
-//	public ChallengeVO getChallenger(String searchBookNo) throws Exception {
-//		// System.out.println(searchBookNo);//로그
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
-//				"java");
-//		StringBuilder builder = new StringBuilder();
-//		builder.append("SELECT");
-//		builder.append("    COUNT(*)");
-//		builder.append(" FROM");
-//		builder.append("    book");
-//		builder.append(" WHERE");
-//		builder.append("    book_no = ? ");
-//
-//		String sql = builder.toString();
-////		System.out.println(sql + searchBookNo );
-//		PreparedStatement statement = connection.prepareStatement(sql);
-//
-//		statement.setString(1, searchBookNo);
-//		System.out.println(sql);
-//
-//		ResultSet resultSet = statement.executeQuery();
-//		ChallengeVO vo2 = null;
-//		if (resultSet.next()) {
-//			int challenger = resultSet.getInt("challenger");
-//			int page = resultSet.getInt("page");
-//			vo2 = new ChallengeVO(page,challenger);
-//		}
-//		resultSet.close();
-//		statement.close();
-//		connection.close();
-//		return vo2;
-//	}
-//
-//}
+		String sql = builder.toString();
+
+		PreparedStatement statement = connection.prepareStatement(sql);
+
+		double inputPage = vo.getGoal();
+		double bookPage = vo.getPage();
+		double result = (inputPage / bookPage) * 100;
+
+		statement.setInt(1, (int) result);
+		statement.setString(2, vo.getId());
+		statement.setString(3, vo.getBookNo());
+		
+		ChallengeVO goal = new ChallengeVO();
+		goal.setGoal((int)result);
+
+		int count = statement.executeUpdate();
+		statement.close();
+		connection.close();
+		return count;
+
+	}
+	
+    //챌린저 수 구하기
+	public int getChallenger(String countBookNo) throws Exception {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
+		StringBuilder builder = new StringBuilder();
+		builder.append("SELECT");
+		builder.append("    COUNT(*) ");
+		builder.append("FROM ");
+		builder.append("    challenge ");
+		builder.append("WHERE");
+		builder.append("        book_no = ? ");
+		builder.append("    AND status = ? ");
+		String sql = builder.toString();
+		PreparedStatement statement = connection.prepareStatement(sql);
+
+		statement.setString(1, countBookNo);
+		statement.setString(2, "y");
+
+		ResultSet resultSet = statement.executeQuery();
+	    int count = 0;
+		if (resultSet.next()) {
+			count = resultSet.getInt(1);
+		}
+		
+//		ChallengeVO vo = new ChallengeVO();
+//		vo.setChallenger(count);
+		
+		resultSet.close();
+		statement.close();
+		connection.close();
+		return count;
+	}
+
+}

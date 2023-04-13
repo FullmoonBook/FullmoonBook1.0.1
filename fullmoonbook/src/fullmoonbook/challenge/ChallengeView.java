@@ -40,9 +40,9 @@ public class ChallengeView {
 	public ChallengeVO insertChallengeStatus(Scanner scanner) {
 		System.out.print("도전하시겠습니까? (Y/N)");
 		String status = scanner.nextLine();
-		if(status.equals("y")) {
+		if (status.equals("y")) {
 			return new ChallengeVO(status);
-		} 
+		}
 		return null;
 	}
 
@@ -55,14 +55,20 @@ public class ChallengeView {
 
 	}
 
-//	public ChallengeVO getPage(Scanner scanner) {
-//		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165)");
-//		int nowPage = Integer.parseInt(scanner.nextLine());
-//		return new ChallengeVO(nowPage);
-//	}
+	public ChallengeVO updateGoal(Scanner scanner) {
+		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165)");
+		int nowPage = Integer.parseInt(scanner.nextLine());
+		return new ChallengeVO(nowPage);
+	}
 
-//	public void ChallengeVO confirmChallenger( ) {
-//		System.out.println();
-//	}
+	public void updateGoalResult(int count) {
+		if (count > 0) {
+			System.out.println("정상적으로 입력되었습니다");
+		} else {
+			System.out.println("오류");
+		}
+	}
+
+
 
 }

@@ -23,21 +23,27 @@ public class ChallengeController {
 	}
 
 	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
-		ChallengeView challengeView = ChallengeView.getInstance();
+		ChallengeView insertStatus = ChallengeView.getInstance();
 //		ChallengeVO vo1 = challengeView.insertChallengeStatus(scanner);
-		if (challengeView != null) {
+		if (insertStatus != null) {
 			session1.setStatus(vo.getStatus());
-			System.out.println(vo.getStatus());
-
-			// session.setGoal(0);
 
 		} else {
 			System.out.println("challcon 저장 안 됨");
 		}
 		return service.insertChallengeStatus(vo);
 	}
-}
 
+	public int updateGoal(ChallengeVO uGoal) throws Exception {
+		ChallengeView nowPage = ChallengeView.getInstance();
+		if (nowPage != null) {
+			session1.setGoal(uGoal.getGoal());
+		}
+		return service.updateGoal(uGoal);
+	}
+
+
+}
 
 //public MemberVO signIn(Scanner scanner) throws Exception {
 //	MemberVO vo = view.inputLoginInfo(scanner);

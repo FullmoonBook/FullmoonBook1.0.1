@@ -33,8 +33,18 @@ public class ChallengeService {
 		vo1.setBookNo("0003");
 		vo1.setStatus(BookApplication.challengeGetSession().getStatus());
 		vo1.setGoal(0);
-		
-		System.out.println(vo1 + "service");
 		return dao.insertChallengeStatus(vo1);
 	}
+	public int updateGoal(ChallengeVO vo) throws Exception {
+		ChallengeVO vo1 = new ChallengeVO();
+		vo1.setId(BookApplication.getSession().getId());
+		vo1.setBookNo("0003");
+		vo1.setGoal(BookApplication.challengeGetSession().getGoal());
+		vo1.setPage(165);
+		
+		System.out.println(vo1 + "updateservice");
+		return dao.updateGoal(vo1);
+	}
+
+	
 }

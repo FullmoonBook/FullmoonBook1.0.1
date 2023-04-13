@@ -6,7 +6,7 @@ public class ChallengeVO {
 	private String id;
 	private String bookNo;
 	private String status;
-	private int goal;
+	private int goal; //nowPage
 	private String bookName;
 	private String author;
 	private int page;
@@ -23,6 +23,9 @@ public class ChallengeVO {
 	public ChallengeVO(String status) {
 		this.status = status;
 	}
+	public ChallengeVO(int goal) {
+		this.goal = goal;
+	}
 	public ChallengeVO(String status, int goal) {
 		this.status = status;
 		this.goal = goal;
@@ -32,6 +35,7 @@ public class ChallengeVO {
 		this.status = status;
 		this.goal = goal;
 	}
+
 	public ChallengeVO(String id, String bookNo, String status, int goal) {
 		this.id = id;
 		this.bookNo = bookNo;
@@ -39,11 +43,11 @@ public class ChallengeVO {
 		this.goal = goal;
 	}
 	
-	public ChallengeVO(String bookName, String author, int page, int challenger) {
+	public ChallengeVO(String bookName, String bookNo, int goal, int page) {
 		this.bookName = bookName;
-		this.author = author;
-		this.page = page; 
-		this.challenger = challenger;
+		this.bookNo = bookNo;
+		this.goal = goal; 
+		this.page = page;
 	}
 	
 	//getter setter
@@ -120,9 +124,10 @@ public class ChallengeVO {
 	}
 	@Override
 	public String toString() {
-		return "ChallengeVO [id=" + id + ", bookNo=" + bookNo + ", status=" + status + ", goal=" + goal + "]";
+		return "ChallengeVO [id=" + id + ", bookNo=" + bookNo + ", goal=" + goal + ", page=" + page + "]";
 	}
-
+	
+	
 	
 	
 	

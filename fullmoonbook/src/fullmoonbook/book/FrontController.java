@@ -3,6 +3,7 @@ package fullmoonbook.book;
 import java.util.Scanner;
 
 import fullmoonbook.challenge.ChallengeController;
+import fullmoonbook.challenge.ChallengeDAO;
 import fullmoonbook.challenge.ChallengeVO;
 import fullmoonbook.challenge.ChallengeView;
 import fullmoonbook.common.MainView;
@@ -40,7 +41,7 @@ public class FrontController {
 //	private ReviewView reviewView = ReviewView.getInstance();
 	private SignView signView = SignView.getInstance();
 
-	private Scanner scanner = new Scanner(System.in); 
+	private Scanner scanner = new Scanner(System.in);
 	public boolean run = true;
 	int login = 0;
 
@@ -53,7 +54,7 @@ public class FrontController {
 		switch (login) {
 		case 1:
 			joinController.join(scanner);
-			//mainView.login(scanner);
+			// mainView.login(scanner);
 			break;
 
 		case 2:
@@ -63,17 +64,38 @@ public class FrontController {
 			if (iMember != null) {
 				int insertStatus = challController.insertChallengeStatus(iMember);
 				challengeView.insertStatusResult(insertStatus);
-			} else if(iMember == null) {
-				System.out.println("현재 ~명의 회원이 도전 중입니다. 함께해 주세요.");
+			} else if (iMember == null) {
+				ChallengeDAO dao = new ChallengeDAO();
+				int challenger = dao.getChallenger("0003");
+				System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요");
+				// 다시 이전 페이지 호출
+
 			}
 
 			break;
 
-//		case 3:
-//			challengeView.insertChallengeStatus(scanner);
-//			mainView.mainManu(scanner);
-//			break;
+		case 3:
+			MemberVO vo1 = signController.signIn(scanner);
+			ChallengeVO uGoal = challengeView.updateGoal(scanner);
+			if (uGoal != null) {
+				int updateGoal = challController.updateGoal(uGoal);
+				challengeView.updateGoalResult(updateGoal);
+			}
+			
+			
+		case 4: 
+			MemberVO vo2 = signController.signIn(scanner);
+			ChallengeVO vo3 = new ChallengeVO();
+			
+			int goal = vo3.getGoal();
+			if(goal > 80) {
+				System.out.println("달성률: ■■■■□");
+			}
+			System.out.println("달성률: ■■■■□");
 
+
+
+			
 		}
 
 		// while (run) {
