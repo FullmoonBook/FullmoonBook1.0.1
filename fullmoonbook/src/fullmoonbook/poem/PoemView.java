@@ -7,7 +7,7 @@ public class PoemView {
 	private static PoemView instance = new PoemView();
 	private PoemView() {
 	}
-	public static PoemView getIstance() {
+	public static PoemView getInstance() {
 		return instance;
 	}
 	public void getPoems() throws Exception {
@@ -18,5 +18,6 @@ public class PoemView {
 		System.out.println("");
 		System.out.println(poems.get(randomIndex));
 	}
+
 
 }
