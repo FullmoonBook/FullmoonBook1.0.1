@@ -28,14 +28,13 @@ public class ChallengeService {
 	}
 
 	public ChallengeVO insertChallengeStatus(ChallengeVO vo) throws Exception {
-
 		ChallengeVO vo1 = new ChallengeVO();
-
-		
-
 		vo1.setId(BookApplication.getSession().getId());
+		vo1.setBookNo("0003");
 		vo1.setStatus(BookApplication.challengeGetSession().getStatus());
+		vo1.setGoal(0);
+		
+		System.out.println(vo1);
 		return dao.insertChallengeStatus(vo1);
 	}
-
 }

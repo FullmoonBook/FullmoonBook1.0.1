@@ -23,6 +23,15 @@ public class ChallengeVO {
 	public ChallengeVO(String status) {
 		this.status = status;
 	}
+	public ChallengeVO(String status, int goal) {
+		this.status = status;
+		this.goal = goal;
+	}
+	public ChallengeVO(String id, String status, int goal) {
+		this.id = id;
+		this.status = status;
+		this.goal = goal;
+	}
 	public ChallengeVO(String id, String bookNo, String status, int goal) {
 	
 		this.id = id;
@@ -109,6 +118,10 @@ public class ChallengeVO {
 	}
 	public String PringChallenger() {
 		return String.format("%d", challenger);
+	}
+	@Override
+	public String toString() {
+		return "ChallengeVO [id=" + id + ", bookNo=" + bookNo + ", status=" + status + ", goal=" + goal + "]";
 	}
 
 	

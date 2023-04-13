@@ -19,11 +19,12 @@ public class FrontController {
 	private static FrontController instance = new FrontController(); // FrontController 싱글톤 생성
 
 	private BookController bookController = BookController.getInstance();
-	private ChallengeController controller = ChallengeController.getInstance(); // controller 호출
+	private ChallengeController challController = ChallengeController.getInstance(); // controller 호출
 	private JoinController joinController = JoinController.getInstance();
 	private PoemController poemController = PoemController.getInstance();
 	private ReviewController reviewController = ReviewController.getInstance();
 	private SignController signController = SignController.getInstance();
+
 
 	private BookView bookView = BookView.getInstance();
 	private ChallengeView challengeView = ChallengeView.getInstance();// View 호출
@@ -64,7 +65,8 @@ public class FrontController {
 //				= signController.signIn(vo);
 //			}
 			
-			challengeView.insertChallengeStatus(scanner);
+			ChallengeVO vo = challController.insertChallengeStatus(scanner);
+			challengeView.getChallenge(vo);
 
 			break;
 

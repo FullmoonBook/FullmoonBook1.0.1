@@ -7,7 +7,7 @@ import fullmoonbook.join.MemberVO;
 
 public class ChallengeController {
 	private static ChallengeController instance = new ChallengeController();
-    private ChallengeVO session = BookApplication.challengeGetSession();
+    private ChallengeVO session1 = BookApplication.challengeGetSession();
 
 	private ChallengeController() {
 	}
@@ -23,10 +23,14 @@ public class ChallengeController {
 	public ChallengeVO insertChallengeStatus(Scanner scanner) throws Exception {
 		ChallengeVO vo = ChallengeView.insertChallengeStatus(scanner);
 		if (vo!= null) {
-			session.setStatus(vo.getStatus());
+			session1.setStatus(vo.getStatus());
+			System.out.println(vo.getStatus());
+
+		//	session.setGoal(0);
+
+		} else {
+			System.out.println("challcon 저장 안 됨");
 		}
-		
-		
 		return service.insertChallengeStatus(vo);	
 	}
 }

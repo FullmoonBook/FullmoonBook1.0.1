@@ -22,6 +22,7 @@ public class SignController {
     	MemberVO member = service.findUser(vo);
         if (member != null) {
             session.setId(member.getId());
+            System.out.println(member);
             session.setPw(member.getPw());
         }
         return view.resultLogin(member);

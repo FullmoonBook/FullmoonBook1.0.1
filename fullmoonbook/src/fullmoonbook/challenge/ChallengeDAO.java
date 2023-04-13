@@ -79,7 +79,7 @@ public class ChallengeDAO {
 		builder.append("    goal");
 		builder.append(") VALUES (");
 		builder.append("    ?,"); // 현재 아이디로 불러와져야 함.
-		builder.append("    '0003',");// 현재 챌린지 책... (이건 scanner로 못받겠다)
+		builder.append("    ?,");// 현재 챌린지 책... (이건 scanner로 못받겠다)
 		builder.append("    ?,");
 		builder.append("    ?"); // goal은 받는 값이 아니지만 계산해서 넣어야하니까!
 		builder.append(")");
@@ -90,8 +90,9 @@ public class ChallengeDAO {
 		System.out.println(sql + vo + "dao2");
 
 		statement.setString(1, vo.getId());
-		statement.setString(2, vo.getStatus());
-		statement.setInt(3, vo.getGoal());
+		statement.setString(2, vo.getBookNo());
+		statement.setString(3, vo.getStatus());
+		statement.setInt(4, vo.getGoal());
 
 		ResultSet resultSet = statement.executeQuery();
 		
