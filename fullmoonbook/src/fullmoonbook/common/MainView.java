@@ -30,6 +30,7 @@ public class MainView {
 
 	public int mainMenu(Scanner scanner) {
 		System.out.println();
+		System.out.println();
 		System.out.println("\t1. 현재 챌린지");
 		System.out.println("\t2. 다음 챌린지");
 		System.out.println("\t3. 마이페이지");
@@ -40,15 +41,14 @@ public class MainView {
 	}
 
 	public int nowBookMenu(Scanner scanner) {
-		System.out.println();
+		System.out.println("\n────────────────────────────────────────────────────");
+		System.out.println("\t     ₍ᐢ｡ ˬ ｡ᐢ₎\n\t   보름 한 책");
 		System.out.println();
 		System.out.println();
 		System.out.println();
 		System.out.println("\t1. 챌린지 정보");
 		System.out.println("\t2. 도서 리뷰");
 		System.out.println("\t3. 메인 페이지");
-		System.out.println();
-		System.out.println();
 		System.out.println();
 		System.out.println("\n────────────────────────────────────────────────────");
 		System.out.print("메뉴를 선택하세요> ");
