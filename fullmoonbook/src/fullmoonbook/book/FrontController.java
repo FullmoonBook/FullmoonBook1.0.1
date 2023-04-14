@@ -111,6 +111,7 @@ public class FrontController {
 									challengeView.insertStatusResult(insertStatus);
 								} else {
 									System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요");
+									
 								}
 
 							} catch (Exception e) {
@@ -127,7 +128,9 @@ public class FrontController {
 //								break;
 //							} else {
 								ChallengeVO iPage = challengeView.updateGoal(scanner);
-								System.out.println(iPage.getGoal());
+								challController.updateGoal(iPage);
+								System.out.println(iPage.getNowPage());
+								System.out.println(BookApplication.challengeGetSession().getNowPage());
 						//	}
 
 							break;

@@ -31,12 +31,12 @@ public class ChallengeController {
 		return service.insertChallengeStatus(vo);
 	}
 
-	public int updateGoal(ChallengeVO uGoal) throws Exception {
+	public int updateGoal(ChallengeVO vo) throws Exception {
 		ChallengeView nowPage = ChallengeView.getInstance();
 		if (nowPage != null) {
-			session.setNowPage(uGoal.getNowPage());
+			session.setNowPage(vo.getNowPage());
 		}
-		return service.updateGoal(uGoal);
+		return service.updateGoal(vo);
 	}
 	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
 		return service.getStatus(vo);

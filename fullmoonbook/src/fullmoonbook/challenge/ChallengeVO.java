@@ -23,8 +23,11 @@ public class ChallengeVO {
 	public ChallengeVO(String status) {
 		this.status = status;
 	}
-	public ChallengeVO(int goal) {
-		this.goal = goal;
+//	public ChallengeVO(int goal) {
+//		this.goal = goal;
+//	}
+	public ChallengeVO(int nowPage) {
+		this.nowPage = nowPage;
 	}
 	public ChallengeVO(String status, int goal) {
 		this.status = status;
