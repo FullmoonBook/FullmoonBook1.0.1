@@ -58,11 +58,9 @@ public class BookDAO {
 		builder.append("WHERE ");
 		builder.append("  book_no = ? ");
 		String sql = builder.toString();
-		//System.out.println(sql + nowChallengeBookNo);
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, nowChallengeBookNo);
 		ResultSet resultSet = statement.executeQuery();
-		//System.out.println(sql);
 
 		BookVO vo = null;
 		if (resultSet.next()) {
@@ -84,7 +82,6 @@ public class BookDAO {
 	}
 
 	public BookVO getNextChallenge(String nextChallengeBookNo) throws Exception {
-		//System.out.println(nextChallengeBookNo);
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
 		String user = "pc26_4";
@@ -107,7 +104,6 @@ public class BookDAO {
 		builder.append("WHERE ");
 		builder.append("  book_no = ? ");
 		String sql = builder.toString();
-		//System.out.println(sql + nextChallengeBookNo);
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, nextChallengeBookNo);
 		ResultSet resultSet = statement.executeQuery();

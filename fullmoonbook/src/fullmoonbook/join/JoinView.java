@@ -15,11 +15,13 @@ public class JoinView {
         MemberVO vo = null;
         while (true) {
             try {
+            	System.out.println("");
                 System.out.print("아이디: ");
                 String id = scanner.nextLine();
                 if (id.length() < 1 || id.length() > 10) {
                     throw new NumberFormatException();
                 }
+            	System.out.println();
                 System.out.print("패스워드: ");
                 String pw = scanner.nextLine();
                 vo = new MemberVO(id, pw);

@@ -141,8 +141,8 @@ public class ChallengeDAO {
 			count = resultSet.getInt(1);
 		}
 		
-//		ChallengeVO vo = new ChallengeVO();
-//		vo.setChallenger(count);
+		ChallengeVO vo = new ChallengeVO();
+		vo.setChallenger(count);
 		
 		resultSet.close();
 		statement.close();

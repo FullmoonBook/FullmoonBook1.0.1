@@ -19,14 +19,14 @@ public class SignController {
 
     public MemberVO signIn(Scanner scanner) throws Exception {
     	MemberVO vo = view.inputLoginInfo(scanner);
-    	System.out.println(vo + "sign");
     	MemberVO member = service.findUser(vo);
         if (member != null) {
             session.setId(member.getId());
-            System.out.println(member);
             session.setPw(member.getPw());
+            return view.resultLogin(member);
+        } else {
+        	return view.resultLogin(null);
         }
-        return view.resultLogin(member);
     }
     public HomeMenu signOut() {
         // 세션 초기화

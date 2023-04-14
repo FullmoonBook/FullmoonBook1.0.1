@@ -3,6 +3,7 @@ package fullmoonbook.join;
 import java.util.Scanner;
 
 import fullmoonbook.common.HomeMenu;
+import fullmoonbook.common.MainView;
 
 public class JoinController {
     private static JoinController instance = new JoinController();
@@ -13,8 +14,10 @@ public class JoinController {
 
     private JoinService service = JoinService.getInstance();
     private JoinView view = JoinView.getInstance();
+    private MainView mainView = MainView.getInstance();
 
-    public HomeMenu join(Scanner scanner) throws Exception {
+
+    public void join(Scanner scanner) throws Exception {
         boolean flag = true;
         while (flag) {
             MemberVO vo = view.inputJoinInfo(scanner);
@@ -26,7 +29,7 @@ public class JoinController {
                 flag = view.resultJoin(result, scanner);
             }
         }
-        return HomeMenu.HOME;
+        
     }
 
 //    public HomeMenu getCustomerInfo() {

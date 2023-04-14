@@ -15,8 +15,10 @@ public class SignView {
     }
 
     public MemberVO inputLoginInfo(Scanner scanner) {
+    	System.out.println("");
         System.out.print("아이디: ");
         String userId = scanner.nextLine();
+    	System.out.println("");
         System.out.print("패스워드: ");
         String userPw = scanner.nextLine();
         return new MemberVO(userId, userPw);
@@ -25,10 +27,10 @@ public class SignView {
     public MemberVO resultLogin(MemberVO vo) {
         if (vo == null) {
             System.out.println("로그인 정보가 일치하지 않습니다. 아이디와 비밀번호를 확인하세요.");
-            return vo;
+            return null;
         }
         System.out.println(vo.getId() + "님 로그인되었습니다.");
-        return null;
+        return vo;
     }
 }
 

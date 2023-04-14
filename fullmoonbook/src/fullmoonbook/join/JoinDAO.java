@@ -17,7 +17,6 @@ public class JoinDAO {
 	}
 
 	public int join(MemberVO vo) throws Exception {
-		System.out.println(vo);
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
 		String user = "pc26_4";
