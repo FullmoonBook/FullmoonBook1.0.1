@@ -8,32 +8,56 @@ import fullmoonbook.poem.PoemView;
 
 public class ReviewView {
 	private static ReviewView instance = new ReviewView();
+
 	private ReviewView() {
 	}
+
 	public static ReviewView getInstance() {
 		return instance;
 	}
-	
-	public int getReviewView(Scanner scanner) throws Exception {
-		Scanner scanner1 = new Scanner(System.in);
-		System.out.println("전체후기");
-		ReviewDAO dao = new ReviewDAO();
-		List<ReviewVO> reviews = dao.getReviews();
-		for (ReviewVO vo1 : reviews) {
-			int count = 0;
-			if (count < 10)
-				System.out.println(vo1);
-			count++;
+
+	public void getReviews(List<ReviewVO> reviews) throws Exception {
+		System.out.println("─────────────────────────────────────");
+		System.out.println("\t    완독자 후기");
+		System.out.println("─────────────────────────────────────");
+		System.out.println("   ID   평점   내용");
+
+//		int count = 0;
+//		for (ReviewVO review : reviews) {
+//			if (count < 1) {
+//				System.out.println(review);
+//				count++;
+//			}
+//		}
+//	}
+		int size = reviews.size(); // ArrayList의 크기를 구한다.
+
+		if (size < 5) { // ArrayList의 크기가 5보다 작은 경우
+			for (int i = 0; i < size; i++) {
+				Object element = reviews.get(i); // ArrayList의 인덱스에 해당하는 객체를 가져온다.
+				System.out.println(element); // 해당 객체를 출력한다.
+			}
+		} else { // ArrayList의 크기가 5 이상인 경우
+			for (int i = size - 5; i < size; i++) {
+				Object element = reviews.get(i); // ArrayList의 인덱스에 해당하는 객체를 가져온다.
+				System.out.println(element); // 해당 객체를 출력한다.
+			}
 		}
-		System.out.println("1.후기작성 2. 이전페이지");
-		return Integer.parseInt(scanner1.nextLine());
 	}
 
 	public ReviewVO inputReview(Scanner scanner) {
-		System.out.print("평점");
+		System.out.print("내용: ");
 		String content = scanner.nextLine();
-		System.out.print("후기내용 ");
+		System.out.print("평점(5점): ");
 		int grade = Integer.parseInt(scanner.nextLine());
 		return new ReviewVO(content, grade);
+	}
+
+	public void inputResult(int count) {
+		if (count > 0) {
+			System.out.println("정상적으로 입력되었습니다.");
+		} else {
+			System.out.println("정상적으로 입력되지 않았습니다.");
+		}
 	}
 }

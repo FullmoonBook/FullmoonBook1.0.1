@@ -1,5 +1,6 @@
 package fullmoonbook.book;
 
+import java.util.List;
 import java.util.Scanner;
 
 import fullmoonbook.challenge.ChallengeController;
@@ -13,6 +14,8 @@ import fullmoonbook.join.MemberVO;
 import fullmoonbook.poem.PoemController;
 import fullmoonbook.poem.PoemView;
 import fullmoonbook.review.ReviewController;
+import fullmoonbook.review.ReviewDAO;
+import fullmoonbook.review.ReviewVO;
 import fullmoonbook.review.ReviewView;
 import fullmoonbook.sign.SignController;
 import fullmoonbook.sign.SignView;
@@ -50,7 +53,17 @@ public class FrontController {
 
 		mainView.welcome();
 		poemView.getPoems();
-		login = mainView.login(scanner);
+//	    login = mainView.login(scanner);
+//		MemberVO vo = signController.signIn(scanner);
+
+//		ReviewVO iReview = reviewView.inputReview(scanner);
+//		if(iReview != null) {
+//			int insertReview = reviewController.insertReview(iReview);
+//			reviewView.inputResult(insertReview);
+//		}
+		List<ReviewVO> reivews = reviewController.getReviews();
+		reviewView.getReviews(reivews);
+		
 
 //		switch (login) {
 //		case 1:
@@ -95,37 +108,41 @@ public class FrontController {
 //
 //		}
 
-		while (run) {
-			int menu = mainView.mainManu(scanner);
-			switch (menu) {
-			case 1:
-				int menu2 = mainView.nowBookManu(scanner);
-				switch(menu2) {
-				case 1:
-					BookVO nowBook = bookController.getNowChallenge("0003");
-					bookView.getNowChallenge(nowBook);
-					break;
-				case 2:
-					
-				}
-			case 2:
-				BookVO nextBook = bookController.getNextChallenge("0004");
-				bookView.getNextChallenge(nextBook);
-				break;
-			case 3:
-				reviewView.getReviewView(scanner);
-				break;
-			case 4:
-				System.out.println("로그아웃 되었습니다");
-				mainView.welcome();
-				break;
-			case 5:
-				System.out.println("프로그램을 종료합니다.");
-				run = false;
-
-			default:
-				break;
-			}
-		}
+//		while (run) {
+//			int menu = mainView.mainManu(scanner);
+//			switch (menu) {
+//			case 1:
+//				
+//				int menu2 = mainView.nowBookManu(scanner);
+//				
+//				
+//				switch (menu2) {
+//				case 6:
+//					BookVO nowBook = bookController.getNowChallenge("0003");
+//					bookView.getNowChallenge(nowBook);
+//					break;
+//				case 7:
+//					break;
+//
+//				}
+//			case 2:
+////				BookVO nextBook = bookController.getNextChallenge("0004");
+////				bookView.getNextChallenge(nextBook);
+//				break;
+//			case 3:
+//				reviewView.getReviewView(scanner);
+//				break;
+//			case 4:
+//				System.out.println("로그아웃 되었습니다");
+//				mainView.welcome();
+//				break;
+//			case 5:
+//				System.out.println("프로그램을 종료합니다.");
+//				run = false;
+//
+//			default:
+//				break;
+//			}
+//		}
 	}
 }

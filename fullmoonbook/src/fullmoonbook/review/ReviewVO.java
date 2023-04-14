@@ -12,14 +12,13 @@ public class ReviewVO {
 	public ReviewVO() {
 		// TODO Auto-generated constructor stub
 	}
-	public ReviewVO(String id, String bookNo, String content, int grade) {
+	public ReviewVO(String id, String content, int grade) {
 		this.id = id;
-		this.bookNo = bookNo;
 		this.content = content;
 		this.grade = grade;
 		
 	}
-	public ReviewVO( String content, int grade) {
+	public ReviewVO(String content, int grade) {
 
 		this.content = content;
 		this.grade = grade;
@@ -57,7 +56,7 @@ public class ReviewVO {
 	}
 	@Override
 	public String toString() {
-		return String.format("완독자 리뷰\n\t %s %s 평점:%d/5", id, content, grade);
+		return String.format("    %s %d/5 %s ", id,  grade,content);
 	}
 	
 		

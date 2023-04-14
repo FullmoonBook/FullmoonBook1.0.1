@@ -26,7 +26,7 @@ public class MainView {
 
 	}
 
-	public int mainManu(Scanner scanner) {
+	public int mainMenu(Scanner scanner) {
 		System.out.println("");
 		System.out.println("1. 현재 챌린지 2. 다음 챌린지 3. 로그아웃");
 		System.out.println("");
@@ -34,7 +34,7 @@ public class MainView {
 		return Integer.parseInt(scanner.nextLine());
 	}
 
-	public int nowBookManu(Scanner scanner) {
+	public int nowBookMenu(Scanner scanner) {
 		System.out.println("");
 		System.out.println("1. 현재 챌린지 2. 도서 리뷰 3. 이전 페이지");
 		System.out.println("");
@@ -42,7 +42,7 @@ public class MainView {
 		return Integer.parseInt(scanner.nextLine());
 	}
 
-	public int nextBookManu(Scanner scanner) {
+	public int nextBookMenu(Scanner scanner) {
 		System.out.println("");
 		System.out.println("1. 현재 챌린지 2. 도서 리뷰 3. 이전 페이지");
 		System.out.println("");

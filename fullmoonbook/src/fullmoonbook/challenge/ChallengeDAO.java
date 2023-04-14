@@ -21,8 +21,7 @@ public class ChallengeDAO {
 	// 챌린지 정보 가져오기
 	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
-				"java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
 		builder.append("    book_name,");
@@ -55,10 +54,9 @@ public class ChallengeDAO {
 		return vo;
 	}
 
-	//
+	//챌린지 시작 업데이트
 	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
-				"java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("INSERT INTO challenge (");
 		builder.append("    id,");
@@ -85,17 +83,16 @@ public class ChallengeDAO {
 		return count;
 
 	}
-
+    // 달성률 업데이트
 	public int updateGoal(ChallengeVO vo) throws Exception {
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
-				"java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("UPDATE ");
 		builder.append("    challenge ");
 		builder.append("SET ");
 		builder.append("    goal = ? ");
 		builder.append("WHERE ");
-		builder.append("    id = ? "); // 현재 아이디로 불러와져야 함.
+		builder.append("    id = ? "); 
 		builder.append("AND ");
 		builder.append(" book_no = ? ");
 
@@ -103,7 +100,7 @@ public class ChallengeDAO {
 
 		PreparedStatement statement = connection.prepareStatement(sql);
 
-		double inputPage = vo.getGoal();
+		double inputPage = vo.getNowPage();
 		double bookPage = vo.getPage();
 		double result = (inputPage / bookPage) * 100;
 
@@ -111,8 +108,7 @@ public class ChallengeDAO {
 		statement.setString(2, vo.getId());
 		statement.setString(3, vo.getBookNo());
 		
-		ChallengeVO goal = new ChallengeVO();
-		goal.setGoal((int)result);
+		vo.setGoal((int)result);
 
 		int count = statement.executeUpdate();
 		statement.close();
@@ -121,7 +117,7 @@ public class ChallengeDAO {
 
 	}
 	
-    //챌린저 수 구하기
+    // 챌린저 수 구하기
 	public int getChallenger(String countBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");

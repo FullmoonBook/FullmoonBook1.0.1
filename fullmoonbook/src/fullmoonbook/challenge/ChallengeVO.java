@@ -43,10 +43,11 @@ public class ChallengeVO {
 		this.goal = goal;
 	}
 	
-	public ChallengeVO(String bookName, String bookNo, int goal, int page) {
+	//updateGoal 생성자
+	public ChallengeVO(String bookName, String bookNo, int nowPage, int page) {
 		this.bookName = bookName;
 		this.bookNo = bookNo;
-		this.goal = goal; 
+		this.nowPage = nowPage; 
 		this.page = page;
 	}
 	

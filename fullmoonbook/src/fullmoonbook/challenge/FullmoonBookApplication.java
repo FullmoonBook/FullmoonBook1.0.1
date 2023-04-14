@@ -11,10 +11,10 @@ public class FullmoonBookApplication {
 			
 		main.process(); //FrontController 실행
 		
-//		/**
-//	     * 로그인한 정보를 가져오는 메소드
-//	     * @return session 정보 반환
-//	     */
+		/**
+	     * 로그인한 정보를 가져오는 메소드
+	     * @return session 정보 반환
+	     */
 //		public static MemberVO getSession() {
 //			return session;
 //		}

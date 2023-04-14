@@ -48,7 +48,7 @@ public class ChallengeView {
 
 	public void insertStatusResult(int count) {
 		if (count > 0) {
-			System.out.println("독서 챌린지를 시작합니다.");
+			System.out.println("당신의 도전을 응원합니다.");
 		} else {
 			System.out.println("챌린지가 정상적으로 시작되지 않았습니다.");
 		}
@@ -56,9 +56,14 @@ public class ChallengeView {
 	}
 
 	public ChallengeVO updateGoal(Scanner scanner) {
-		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165)");
+		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165쪽)");
 		int nowPage = Integer.parseInt(scanner.nextLine());
-		return new ChallengeVO(nowPage);
+		if (nowPage > 0 && nowPage <= 165) {
+			return new ChallengeVO(nowPage);
+		} else {
+			System.out.println("범위 밖의 숫자입니다. 다시 입력해 주세요.");
+			return null;
+		}
 	}
 
 	public void updateGoalResult(int count) {
@@ -68,7 +73,5 @@ public class ChallengeView {
 			System.out.println("오류");
 		}
 	}
-
-
 
 }
