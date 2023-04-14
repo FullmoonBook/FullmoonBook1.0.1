@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import fullmoonbook.common.BookApplication;
+
 public class ChallengeDAO {
 	private static ChallengeDAO instance = new ChallengeDAO(); // 싱글톤
+	private ChallengeVO session = BookApplication.challengeGetSession();
+
 
 	public ChallengeDAO() {
 	}
@@ -109,7 +113,7 @@ public class ChallengeDAO {
 		statement.setString(2, vo.getId());
 		statement.setString(3, vo.getBookNo());
 		
-		vo.setGoal((int)result);
+		session.setGoal((int)result);
 
 		int count = statement.executeUpdate();
 		statement.close();

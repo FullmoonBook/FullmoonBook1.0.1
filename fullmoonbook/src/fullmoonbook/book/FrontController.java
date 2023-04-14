@@ -52,6 +52,10 @@ public class FrontController {
 	int login = 0;
 	int goal = 0;
 	MemberVO vo = null;
+	ChallengeVO challVo = null;
+
+
+	
 
 	int challenger = 0;
 	// ChallengeVO challengeVO = null;
@@ -74,6 +78,7 @@ public class FrontController {
 				joinController.join(scanner);
 			case 2:
 				vo = signController.signIn(scanner);
+				
 				while (vo == null) {
 					signController.signIn(scanner);
 					break;
@@ -111,7 +116,7 @@ public class FrontController {
 									challengeView.insertStatusResult(insertStatus);
 								} else {
 									System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요");
-									
+
 								}
 
 							} catch (Exception e) {
@@ -120,18 +125,16 @@ public class FrontController {
 							break;
 
 						case 2:
-
-//							ChallengeVO vo1 = new ChallengeVO();
-//							ChallengeVO vo2 = challController.getStatus(vo1);
-//							if (!(vo2.getStatus().equals("y"))) {
-//								System.out.println("먼저 챌린지를 시작해 주세요.");
-//								break;
-//							} else {
+							ChallengeVO challengeVO = new ChallengeVO();
+							challController.getStatus(challengeVO);
+							if (BookApplication.challengeGetSession().getStatus() == null) {
+								System.out.println("먼저 챌린지를 시작해 주세요.");
+								break;
+							} else {
 								ChallengeVO iPage = challengeView.updateGoal(scanner);
 								challController.updateGoal(iPage);
-								System.out.println(iPage.getNowPage());
-								System.out.println(BookApplication.challengeGetSession().getNowPage());
-						//	}
+
+							}
 
 							break;
 						}
@@ -144,11 +147,20 @@ public class FrontController {
 					case 2:
 						List<ReviewVO> reivews = reviewController.getReviews();
 						reviewView.getReviews(reivews);
-						int menu4 = mainView.toMainMenu(scanner);
-						if (menu4 == 1) {
+						int menu4 = mainView.reviewMenu(scanner);
+						System.out.println(BookApplication.challengeGetSession().getGoal());
+						if (menu4 == 2) {
 							break;
+						} else if (BookApplication.challengeGetSession().getGoal() == 100) {
+							ReviewVO iReview = reviewView.inputReview(scanner);
+							if (iReview != null) {
+								int insertReview = reviewController.insertReview(iReview);
+								reviewView.inputResult(insertReview);
+							} else {
+								System.out.println("달성률 채우기");
+								break;
+							}
 						}
-						break;
 
 					case 3:
 						break;
@@ -187,11 +199,6 @@ public class FrontController {
 //		case 2:
 //			MemberVO vo = signController.signIn(scanner);
 //
-//			ReviewVO iReview = reviewView.inputReview(scanner);
-//			if (iReview != null) {
-//				int insertReview = reviewController.insertReview(iReview);
-//				reviewView.inputResult(insertReview);
-//			}
 //			List<ReviewVO> reivews = reviewController.getReviews();
 //			reviewView.getReviews(reivews);
 //

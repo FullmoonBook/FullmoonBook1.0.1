@@ -30,6 +30,8 @@ public class ChallengeService {
 	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
 		ChallengeVO status = new ChallengeVO();
 		status.setId(BookApplication.getSession().getId());
+		status.setStatus(BookApplication.challengeGetSession().getStatus());
+
 		return dao.getStatus(vo);
 	}
 
@@ -38,7 +40,7 @@ public class ChallengeService {
 		iStatus.setId(BookApplication.getSession().getId());
 		iStatus.setBookNo("0003");
 		iStatus.setStatus(BookApplication.challengeGetSession().getStatus());
-		iStatus.setGoal(0);
+		iStatus.setGoal(BookApplication.challengeGetSession().getGoal());
 		return dao.insertChallengeStatus(iStatus);
 	}
 	public int updateGoal(ChallengeVO vo) throws Exception {
