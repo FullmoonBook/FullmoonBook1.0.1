@@ -56,7 +56,7 @@ public class ReviewVO {
 	}
 	@Override
 	public String toString() {
-		return String.format("    %s %d/5 %s ", id,  grade,content);
+		return String.format("    %s %d/5   %s ", id,  grade,content);
 	}
 	
 		

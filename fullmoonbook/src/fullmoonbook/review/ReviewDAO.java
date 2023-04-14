@@ -88,8 +88,6 @@ public class ReviewDAO {
 			String bookNo = resultSet.getString("book_no");
 			String content = resultSet.getString("content");
 			int grade = resultSet.getInt("grade");
-//			Timestamp registerDate = resultSet.getTimestamp("register_date");
-//			Timestamp modifyDate = resultSet.getTimestamp("modify_date");
 			list.add(new ReviewVO(id, content, grade));
 		}
 		resultSet.close();

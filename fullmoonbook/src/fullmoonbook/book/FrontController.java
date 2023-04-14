@@ -53,25 +53,31 @@ public class FrontController {
 
 		mainView.welcome();
 		poemView.getPoems();
-//	    login = mainView.login(scanner);
-//		MemberVO vo = signController.signIn(scanner);
+	//	joinController.join(scanner);
 
-//		ReviewVO iReview = reviewView.inputReview(scanner);
-//		if(iReview != null) {
-//			int insertReview = reviewController.insertReview(iReview);
-//			reviewView.inputResult(insertReview);
-//		}
-		List<ReviewVO> reivews = reviewController.getReviews();
-		reviewView.getReviews(reivews);
-		
+		login = mainView.login(scanner);
 
-//		switch (login) {
-//		case 1:
-//			joinController.join(scanner);
-//			// mainView.login(scanner);
-//			break;
-//
-//		case 2:
+		switch (login) {
+		case 1:
+			joinController.join(scanner);
+			// mainView.login(scanner);
+			break;
+
+		case 2:
+			MemberVO vo = signController.signIn(scanner);
+
+			ReviewVO iReview = reviewView.inputReview(scanner);
+			if (iReview != null) {
+				int insertReview = reviewController.insertReview(iReview);
+				reviewView.inputResult(insertReview);
+			}
+			List<ReviewVO> reivews = reviewController.getReviews();
+			reviewView.getReviews(reivews);
+
+		}
+	}
+}
+
 //			MemberVO vo = signController.signIn(scanner);
 //
 //			ChallengeVO iMember = challengeView.insertChallengeStatus(scanner);
@@ -144,5 +150,3 @@ public class FrontController {
 //				break;
 //			}
 //		}
-	}
-}

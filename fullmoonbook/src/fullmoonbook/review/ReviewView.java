@@ -20,16 +20,8 @@ public class ReviewView {
 		System.out.println("─────────────────────────────────────");
 		System.out.println("\t    완독자 후기");
 		System.out.println("─────────────────────────────────────");
-		System.out.println("   ID   평점   내용");
+		System.out.println("    작성자     평점  내용");
 
-//		int count = 0;
-//		for (ReviewVO review : reviews) {
-//			if (count < 1) {
-//				System.out.println(review);
-//				count++;
-//			}
-//		}
-//	}
 		int size = reviews.size(); // ArrayList의 크기를 구한다.
 
 		if (size < 5) { // ArrayList의 크기가 5보다 작은 경우

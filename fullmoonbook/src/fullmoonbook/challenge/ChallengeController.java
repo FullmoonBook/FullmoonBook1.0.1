@@ -27,9 +27,6 @@ public class ChallengeController {
 //		ChallengeVO vo1 = challengeView.insertChallengeStatus(scanner);
 		if (insertStatus != null) {
 			session.setStatus(vo.getStatus());
-
-		} else {
-			System.out.println("challcon 저장 안 됨");
 		}
 		return service.insertChallengeStatus(vo);
 	}
