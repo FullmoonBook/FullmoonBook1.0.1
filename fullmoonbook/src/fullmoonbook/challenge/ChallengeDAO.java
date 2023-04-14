@@ -76,6 +76,7 @@ public class ChallengeDAO {
 		statement.setString(2, vo.getBookNo());
 		statement.setString(3, vo.getStatus());
 		statement.setInt(4, vo.getGoal());
+		
 
 		int count = statement.executeUpdate();
 		statement.close();
@@ -148,6 +149,33 @@ public class ChallengeDAO {
 		statement.close();
 		connection.close();
 		return count;
+	}
+	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
+		StringBuilder builder = new StringBuilder();
+		builder.append("SELECT");
+		builder.append("    status ");
+		builder.append("FROM ");
+		builder.append("    challenge ");
+		builder.append("WHERE");
+		builder.append("       id = ? ");
+		String sql = builder.toString();
+		PreparedStatement statement = connection.prepareStatement(sql);
+
+		statement.setString(1, vo.getId());
+
+		ResultSet resultSet = statement.executeQuery();
+		ChallengeVO vo1 = null;
+
+		if (resultSet.next()) {
+			String status = resultSet.getString("status");
+			vo1 = new ChallengeVO(status);
+		}
+		resultSet.close();
+		statement.close();
+		connection.close();
+		return vo1;
 	}
 
 }

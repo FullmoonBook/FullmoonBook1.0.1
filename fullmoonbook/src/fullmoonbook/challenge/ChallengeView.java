@@ -37,7 +37,7 @@ public class ChallengeView {
 		System.out.println(controller.getChallenge("0003"));
 	}
 
-	public ChallengeVO insertChallengeStatus(Scanner scanner) {
+	public ChallengeVO insertChallengeStatus(Scanner scanner) throws Exception{
 		System.out.print("도전하시겠습니까? (Y/N)");
 		String status = scanner.nextLine();
 		if (status.equals("y")) {
@@ -50,7 +50,7 @@ public class ChallengeView {
 		if (count > 0) {
 			System.out.println("당신의 도전을 응원합니다.");
 		} else {
-			System.out.println("챌린지가 정상적으로 시작되지 않았습니다.");
+			System.out.println("");
 		}
 
 	}
@@ -72,6 +72,9 @@ public class ChallengeView {
 		} else {
 			System.out.println("오류");
 		}
+	}
+	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
+		return new ChallengeVO(vo.getStatus());
 	}
 
 }

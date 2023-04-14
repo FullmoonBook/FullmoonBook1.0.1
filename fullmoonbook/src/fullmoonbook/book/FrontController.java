@@ -51,6 +51,7 @@ public class FrontController {
 	public boolean mainRun = true;
 	int login = 0;
 	MemberVO vo = null;
+	// ChallengeVO challengeVO = null;
 
 	public void process() throws Exception {
 
@@ -59,8 +60,8 @@ public class FrontController {
 				mainView.welcome();
 				poemView.getPoems();
 				login = mainView.loginMenu(scanner);
-			} while(!(login == 1 || login == 2));
-				
+			} while (!(login == 1 || login == 2));
+
 			switch (login) {
 			case 1:
 				joinController.join(scanner); // >> 로그인 화면으로
@@ -76,7 +77,6 @@ public class FrontController {
 				loginRun = false;
 				break;
 			}
-
 			while (mainRun) {
 				mainView.welcome();
 				int menu = mainView.mainMenu(scanner);
@@ -89,25 +89,33 @@ public class FrontController {
 						BookVO nowBook = bookController.getNowChallenge("0003");
 						bookView.getNowChallenge(nowBook);
 						int menu3 = mainView.startChallengeMenu(scanner);
-						switch(menu3) {
+						switch (menu3) {
 						case 1:
-							ChallengeVO iMember = challengeView.insertChallengeStatus(scanner);
-							if (iMember != null) {
-								int insertStatus = challController.insertChallengeStatus(iMember);
-								challengeView.insertStatusResult(insertStatus);
-							} else {
-								challengeView.insertStatusResult(0);
+							try {
+								ChallengeVO iMember = challengeView.insertChallengeStatus(scanner);
+								if (iMember != null) {
+									int insertStatus = challController.insertChallengeStatus(iMember);
+									challengeView.insertStatusResult(insertStatus);
+								} else {
+									ChallengeDAO dao = new ChallengeDAO();
+									int challenger = dao.getChallenger("0003");
+									System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요");
+								}
+								
+							} catch (Exception e) {
+								System.out.println("이미 진행 중입니다.");
 							}
+							break;
+							
 						case 2:
 							break;
 						}
-						
-					
-//						
-//						System.out.println(BookApplication.challengeGetSession().getStatus());
-//						if(BookApplication.challengeGetSession().getStatus() == null) {
-//						}
-//						System.out.println(BookApplication.challengeGetSession().getStatus());
+
+//		                  
+//		                  System.out.println(BookApplication.challengeGetSession().getStatus());
+//		                  if(BookApplication.challengeGetSession().getStatus() == null) {
+//		                  }
+//		                  System.out.println(BookApplication.challengeGetSession().getStatus());
 						if (menu3 == 1) {
 							break;
 						}
@@ -153,7 +161,6 @@ public class FrontController {
 		}
 	}
 }
-
 //	//	joinController.join(scanner);
 //
 //
@@ -174,6 +181,10 @@ public class FrontController {
 
 //			MemberVO vo = signController.signIn(scanner);
 //
+//			ChallengeVO iMember = challengeView.insertChallengeStatus(scanner);
+//			if (iMember != null) {
+//				int insertStatus = challController.insertChallengeStatus(iMember);
+//				challengeView.insertStatusResult(insertStatus);
 //			} else if (iMember == null) {
 //				ChallengeDAO dao = new ChallengeDAO();
 //				int challenger = dao.getChallenger("0003");
@@ -186,11 +197,6 @@ public class FrontController {
 //
 //		case 3:
 //			MemberVO vo1 = signController.signIn(scanner);
-//			ChallengeVO uGoal = challengeView.updateGoal(scanner);
-//			if (uGoal != null) {
-//				int updateGoal = challController.updateGoal(uGoal);
-//				challengeView.updateGoalResult(updateGoal);
-//			}
 //
 //		case 4:
 //			MemberVO vo2 = signController.signIn(scanner);

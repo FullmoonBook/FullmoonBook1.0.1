@@ -38,6 +38,8 @@ public class ChallengeController {
 		}
 		return service.updateGoal(uGoal);
 	}
-
+	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
+		return service.getStatus(vo);
+	}
 
 }
