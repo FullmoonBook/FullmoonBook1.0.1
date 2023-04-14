@@ -26,12 +26,14 @@ public class ChallengeService {
 	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
 		return dao.getChallenge(searchBookNo);
 	}
+	public int getGoal(ChallengeVO vo) throws Exception {
+		return dao.getGoal(vo);
+		
+	}
 	
-	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
+	public String getStatus(ChallengeVO vo) throws Exception {
 		ChallengeVO status = new ChallengeVO();
 		status.setId(BookApplication.getSession().getId());
-		status.setStatus(BookApplication.challengeGetSession().getStatus());
-
 		return dao.getStatus(vo);
 	}
 

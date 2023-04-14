@@ -26,7 +26,6 @@ public class SignController {
         if (member != null) {
             session.setId(member.getId());
             session.setPw(member.getPw());
-            challSession.setId(member.getId());
             return view.resultLogin(member);
         } else {
         	return view.resultLogin(null);

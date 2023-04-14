@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import fullmoonbook.challenge.ChallengeVO;
+import fullmoonbook.common.BookApplication;
 import fullmoonbook.join.MemberVO;
 
 public class SignDAO {
@@ -16,6 +18,7 @@ public class SignDAO {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
+	private ChallengeVO session = BookApplication.challengeGetSession();
 
 	private static SignDAO instance = new SignDAO();
 
@@ -53,8 +56,10 @@ public class SignDAO {
 		if (resultSet.next()) {
 			String id = resultSet.getString("id");
 			String pw = resultSet.getString("pw");
+			session.setId(id);
 			member = new MemberVO(id, pw);
 		}
+		
 		resultSet.close();
 		statement.close();
 		connection.close();

@@ -152,7 +152,8 @@ public class ChallengeDAO {
 		connection.close();
 		return count;
 	}
-	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
+
+	public String getStatus(ChallengeVO vo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
 		StringBuilder builder = new StringBuilder();
@@ -169,15 +170,42 @@ public class ChallengeDAO {
 
 		ResultSet resultSet = statement.executeQuery();
 		ChallengeVO vo1 = null;
-
 		if (resultSet.next()) {
 			String status = resultSet.getString("status");
 			vo1 = new ChallengeVO(status);
 		}
+		
 		resultSet.close();
 		statement.close();
 		connection.close();
-		return vo1;
+		return vo1.getStatus();
+	}
+	public int getGoal(ChallengeVO vo) throws Exception {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
+		StringBuilder builder = new StringBuilder();
+		builder.append("SELECT");
+		builder.append("    goal ");
+		builder.append("FROM ");
+		builder.append("    challenge ");
+		builder.append("WHERE");
+		builder.append("       id = ? ");
+		String sql = builder.toString();
+		PreparedStatement statement = connection.prepareStatement(sql);
+
+		statement.setString(1, vo.getId());
+
+		ResultSet resultSet = statement.executeQuery();
+		ChallengeVO vo2 = null;
+		if (resultSet.next()) {
+			int goal = resultSet.getInt("goal");
+			vo2 = new ChallengeVO(goal);
+		}
+		session.setGoal(vo2.getGoal());
+		resultSet.close();
+		statement.close();
+		connection.close();
+		return vo2.getGoal();
 	}
 
 }
