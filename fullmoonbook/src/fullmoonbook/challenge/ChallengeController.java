@@ -34,7 +34,7 @@ public class ChallengeController {
 	public int updateGoal(ChallengeVO uGoal) throws Exception {
 		ChallengeView nowPage = ChallengeView.getInstance();
 		if (nowPage != null) {
-			session.setGoal(uGoal.getGoal());
+			session.setNowPage(uGoal.getNowPage());
 		}
 		return service.updateGoal(uGoal);
 	}

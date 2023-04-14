@@ -45,7 +45,7 @@ public class ChallengeService {
 		ChallengeVO goal = new ChallengeVO();
 		goal.setId(BookApplication.getSession().getId());
 		goal.setBookNo("0003");
-		goal.setNowPage(BookApplication.challengeGetSession().getGoal());
+		goal.setNowPage(BookApplication.challengeGetSession().getNowPage());
 		goal.setPage(165);
 		return dao.updateGoal(goal);
 	}

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fullmoonbook.challenge.ChallengeDAO;
+
 public class BookDAO {
 	public static void main(String[] args) {
 		try {
@@ -42,6 +44,7 @@ public class BookDAO {
 		String password = "java";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		StringBuilder builder = new StringBuilder();
+//ChallengeDAO cDAO = ChallengeDAO.getInstance();
 
 		builder.append("SELECT ");
 		builder.append("  book_no, ");

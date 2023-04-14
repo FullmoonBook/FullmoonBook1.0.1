@@ -16,7 +16,7 @@ public class MainView {
 		System.out.println("\t     ₍ᐢ｡ ˬ ｡ᐢ₎\n\t   보름 한 책");
 	}
 
-	public int loginMenu(Scanner scanner) {
+	public int loginMenu(Scanner scanner) throws Exception {
 		System.out.println("");
 		System.out.println("\t1. 회원가입");
 		System.out.println("\t2. 로그인");
@@ -37,7 +37,7 @@ public class MainView {
 
 	public int nowBookMenu(Scanner scanner) {
 		System.out.println("");
-		System.out.println("1. 현재 챌린지 2. 도서 리뷰 3. 메인 페이지 ");
+		System.out.println("1. 챌린지 정보 2. 도서 리뷰 3. 메인 페이지 ");
 		System.out.println("");
 		System.out.print("메뉴를 선택하세요> ");
 		return Integer.parseInt(scanner.nextLine());
@@ -53,7 +53,8 @@ public class MainView {
 	public int startChallengeMenu(Scanner scanner) {
 		System.out.println("");
 		System.out.println("1. 챌린지 시작");
-		System.out.println("2. 메인 페이지");
+		System.out.println("2. 페이지 입력");
+		System.out.println("3. 메인 페이지");
 		System.out.println("");
 		System.out.print("메뉴를 선택하세요> ");
 		return Integer.parseInt(scanner.nextLine());

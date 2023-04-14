@@ -123,8 +123,8 @@ public class BookVO {
 			return String.format("\t    %s\n\n %s\n   %s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
 					genre, publisher, period);
 		} else {
-			return String.format("\t   %s\n\n %s\n%s, %s쪽, %s, %s \n    기간: %s\n\t    챌린저: %s명", bookName, subtitle,
-					author, page, genre, publisher, period, challenger);
+			return String.format("\t   %s\n\n %s\n%s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle,
+					author, page, genre, publisher, period);
 		}
 	}
 

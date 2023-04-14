@@ -50,7 +50,10 @@ public class FrontController {
 	public boolean loginRun = true;
 	public boolean mainRun = true;
 	int login = 0;
+	int goal = 0;
 	MemberVO vo = null;
+
+	int challenger = 0;
 	// ChallengeVO challengeVO = null;
 
 	public void process() throws Exception {
@@ -59,21 +62,23 @@ public class FrontController {
 			do {
 				mainView.welcome();
 				poemView.getPoems();
-				login = mainView.loginMenu(scanner);
+				try {
+					login = mainView.loginMenu(scanner);
+				} catch (Exception e) {
+					System.out.println("잘못된 입력입니다.");
+				}
 			} while (!(login == 1 || login == 2));
 
 			switch (login) {
 			case 1:
-				joinController.join(scanner); // >> 로그인 화면으로
-				// mainView.login(scanner);
-				break;
+				joinController.join(scanner);
 			case 2:
 				vo = signController.signIn(scanner);
 				while (vo == null) {
 					signController.signIn(scanner);
 					break;
 				}
-			case 3:
+			case 3: // 프로그램 종료 빠져나가기.
 				loginRun = false;
 				break;
 			}
@@ -88,6 +93,14 @@ public class FrontController {
 					case 1:
 						BookVO nowBook = bookController.getNowChallenge("0003");
 						bookView.getNowChallenge(nowBook);
+						ChallengeDAO dao = ChallengeDAO.getInstance();
+						challenger = dao.getChallenger("0003");
+						System.out.println("\t    챌린저: " + challenger + "명");
+//									goal = ;
+//									if (goal > 80) {
+//										System.out.println("      달성률: ■■■■□" + goal +" %");
+//									}
+//									System.out.println("      달성률: □□□□□" + goal +" %");
 						int menu3 = mainView.startChallengeMenu(scanner);
 						switch (menu3) {
 						case 1:
@@ -97,25 +110,29 @@ public class FrontController {
 									int insertStatus = challController.insertChallengeStatus(iMember);
 									challengeView.insertStatusResult(insertStatus);
 								} else {
-									ChallengeDAO dao = new ChallengeDAO();
-									int challenger = dao.getChallenger("0003");
 									System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요");
 								}
-								
+
 							} catch (Exception e) {
 								System.out.println("이미 진행 중입니다.");
 							}
 							break;
-							
+
 						case 2:
+
+//							ChallengeVO vo1 = new ChallengeVO();
+//							ChallengeVO vo2 = challController.getStatus(vo1);
+//							if (!(vo2.getStatus().equals("y"))) {
+//								System.out.println("먼저 챌린지를 시작해 주세요.");
+//								break;
+//							} else {
+								ChallengeVO iPage = challengeView.updateGoal(scanner);
+								System.out.println(iPage.getGoal());
+						//	}
+
 							break;
 						}
 
-//		                  
-//		                  System.out.println(BookApplication.challengeGetSession().getStatus());
-//		                  if(BookApplication.challengeGetSession().getStatus() == null) {
-//		                  }
-//		                  System.out.println(BookApplication.challengeGetSession().getStatus());
 						if (menu3 == 1) {
 							break;
 						}
@@ -193,19 +210,3 @@ public class FrontController {
 //
 //			}
 //
-//			break;
-//
-//		case 3:
-//			MemberVO vo1 = signController.signIn(scanner);
-//
-//		case 4:
-//			MemberVO vo2 = signController.signIn(scanner);
-//			ChallengeVO vo3 = new ChallengeVO();
-//
-//			int goal = vo3.getGoal();
-//			if (goal > 80) {
-//				System.out.println("달성률: ■■■■□");
-//			}
-//			System.out.println("달성률: ■■■■□");
-//
-//		}
