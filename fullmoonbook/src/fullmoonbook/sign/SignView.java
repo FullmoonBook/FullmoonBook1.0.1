@@ -15,7 +15,17 @@ public class SignView {
     }
 
     public MemberVO inputLoginInfo(Scanner scanner) {
-    	System.out.println("");
+    	System.out.println("\n────────────────────────────────────────────────────");
+    	System.out.println();
+    	System.out.println();
+    	System.out.println();
+    	System.out.println();
+    	System.out.println("아이디와 비밀번호를 입력하세요.");
+    	System.out.println();
+    	System.out.println();
+    	System.out.println();
+    	System.out.println();
+    	System.out.println("\n────────────────────────────────────────────────────");
         System.out.print("아이디: ");
         String userId = scanner.nextLine();
     	System.out.println("");
@@ -29,7 +39,7 @@ public class SignView {
             System.out.println("로그인 정보가 일치하지 않습니다. 아이디와 비밀번호를 확인하세요.");
             return null;
         }
-        System.out.println(vo.getId() + "님 로그인되었습니다.");
+        System.out.print("\n\t" + vo.getId() + "님 로그인되었습니다.");
         return vo;
     }
 }
