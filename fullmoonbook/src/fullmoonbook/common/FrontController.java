@@ -98,35 +98,35 @@ public class FrontController {
 						bookView.getNowChallenge(nowBook);
 
 						challenger = dao.getChallenger("0003");
-						System.out.println("\t    챌린저: " + challenger + "명");
+						System.out.println("\t            챌린저: " + challenger + "명");
 						System.out.println();
 						try {
 							if (challController.getStatus(session).equals("y")) {
 								goal = challController.getGoal(session);
 								if (goal == 100) {
-									System.out.println("         달성률: 📘📘📘📘📘 " + goal + " %");
+									System.out.println("                 달성률: 📘📘📘📘📘 " + goal + " %");
 								} else if (goal >= 80) {
-									System.out.println("         달성률: 📘📘📘📘📕 " + goal + " %");
+									System.out.println("                 달성률: 📘📘📘📘📕 " + goal + " %");
 
 								} else if (goal >= 60) {
-									System.out.println("         달성률: 📘📘📘📕📕 " + goal + " %");
+									System.out.println("                 달성률: 📘📘📘📕📕 " + goal + " %");
 
 								} else if (goal >= 40) {
-									System.out.println("         달성률: 📘📘📕📕📕 " + goal + " %");
+									System.out.println("                 달성률: 📘📘📕📕📕 " + goal + " %");
 
 								} else if (goal >= 20) {
-									System.out.println("         달성률: 📘📕📕📕📕 " + goal + " %");
+									System.out.println("                 달성률: 📘📕📕📕📕 " + goal + " %");
 
 								} else {
-									System.out.println("         달성률: 📕📕📕📕📕 " + goal + " %");
+									System.out.println("                 달성률: 📕📕📕📕📕 " + goal + " %");
 								}
 							} else {
 
-								System.out.println("         달성률: 📕📕📕📕📕 " + goal + " %");
+								System.out.println("                 달성률: 📕📕📕📕📕 " + goal + " %");
 							}
 
 						} catch (Exception e) {
-							System.out.println("         달성률: 📕📕📕📕📕  0 %");
+							System.out.println("                 달성률: 📕📕📕📕📕  0 %");
 						}
 
 						int menu2 = mainView.startChallengeMenu(scanner);

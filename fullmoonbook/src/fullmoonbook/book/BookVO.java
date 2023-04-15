@@ -118,10 +118,10 @@ public class BookVO {
 
 	public String printBook(boolean flag) {
 		if (flag) {
-			return String.format("\t    %s\n\n %s\n   %s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
+			return String.format("\t\t\t    %s\n\n\t\t %s\n   %s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
 					genre, publisher, period);
 		} else {
-			return String.format("\t   %s\n\n %s\n%s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
+			return String.format("\t\t\t   %s\n\n\t\t %s\n%s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
 					genre, publisher, period);
 		}
 	}
