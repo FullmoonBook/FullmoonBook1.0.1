@@ -39,7 +39,7 @@ public class FrontController {
 	private PoemController poemController = PoemController.getInstance();
 	private ReviewController reviewController = ReviewController.getInstance();
 	private SignController signController = SignController.getInstance();
-	ChallengeDAO dao = ChallengeDAO.getInstance(); //<<<<<<<<<<<<<<<<<<<<
+	ChallengeDAO dao = ChallengeDAO.getInstance(); // <<<<<<<<<<<<<<<<<<<<
 
 	private BookView bookView = BookView.getInstance();
 	private ChallengeView challengeView = ChallengeView.getInstance();
@@ -100,23 +100,33 @@ public class FrontController {
 						challenger = dao.getChallenger("0003");
 						System.out.println("\t    챌린저: " + challenger + "명");
 						System.out.println();
-						goal = challController.getGoal(session);
-						if (goal == 100) {
-							System.out.println("         달성률: ■■■■■ " + goal + " %");
-						} else if (goal >= 80) {
-							System.out.println("         달성률: ■■■■□ " + goal + " %");
+						try {
+							if (challController.getStatus(session).equals("y")) {
+								goal = challController.getGoal(session);
+								if (goal == 100) {
+									System.out.println("         달성률: ■■■■■ " + goal + " %");
+								} else if (goal >= 80) {
+									System.out.println("         달성률: ■■■■□ " + goal + " %");
 
-						} else if (goal >= 60) {
-							System.out.println("         달성률: ■■■□□ " + goal + " %");
+								} else if (goal >= 60) {
+									System.out.println("         달성률: ■■■□□ " + goal + " %");
 
-						} else if (goal >= 40) {
-							System.out.println("         달성률: ■■□□□ " + goal + " %");
+								} else if (goal >= 40) {
+									System.out.println("         달성률: ■■□□□ " + goal + " %");
 
-						} else if (goal >= 20) {
-							System.out.println("         달성률: ■□□□□ " + goal + " %");
+								} else if (goal >= 20) {
+									System.out.println("         달성률: ■□□□□ " + goal + " %");
 
-						} else {
-							System.out.println("         달성률: □□□□□ " + goal + " %");
+								} else {
+									System.out.println("         달성률: □□□□□ " + goal + " %");
+								}
+							} else {
+
+								System.out.println("         달성률: □□□□□ " + goal + " %");
+							}
+
+						} catch (Exception e) {
+							System.out.println("         달성률: □□□□□  0%");
 						}
 
 						int menu2 = mainView.startChallengeMenu(scanner);
@@ -137,16 +147,20 @@ public class FrontController {
 								continue;
 							}
 						case 2: // 페이지 입력
-							if (challController.getStatus(session).equals("y")) {
-								ChallengeVO iPage = challengeView.updateGoal(scanner);
-								int updateGoal = challController.updateGoal(iPage);
-								challengeView.updateGoalResult(updateGoal);
-								continue;
+							try {
+								if (challController.getStatus(session).equals("y")) {
+									ChallengeVO iPage = challengeView.updateGoal(scanner);
+									int updateGoal = challController.updateGoal(iPage);
+									challengeView.updateGoalResult(updateGoal);
+									continue;
 
-							} else {
+								} else {
+									System.out.println("먼저 챌린지를 시작해 주세요.");
+									continue;
+								}
+							} catch (Exception e) {
 								System.out.println("먼저 챌린지를 시작해 주세요.");
 								continue;
-
 							}
 
 						case 3: // 메인 페이지로
@@ -156,15 +170,14 @@ public class FrontController {
 						default:
 							continue;
 						}
-
 					} while (nowRun);
 					break;
 
 				case 2: // 다음 챌린지
 					BookVO nextBook = bookController.getNextChallenge("0004");
 					bookView.getNextChallenge(nextBook);
-					int menu5 = mainView.toMainMenu(scanner);
-					if (menu5 == 1) {
+					int menu3 = mainView.toMainMenu(scanner);
+					if (menu3 == 1) {
 						continue;
 					}
 
@@ -188,15 +201,24 @@ public class FrontController {
 					}
 
 				case 4: // 마이페이지
+					System.out.println();
+					System.out.println();
 					System.out.println("\t" + vo.getId() + "님의 마이페이지");
 					System.out.println(dao.getChallenge("0003").getBookName() + challController.getGoal(session) + "%");
-					break;
-					
+					int menu5 = mainView.toMainMenu(scanner);
+					switch (menu5) {
+					case 1:
+						continue;
+
+					default:
+						continue;
+					}
+
 				case 5: // 로그아웃
 					System.out.println("로그아웃 되었습니다");
 					mainRun = false;
 					continue;
-					
+
 				default:
 					continue;
 
