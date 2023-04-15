@@ -12,6 +12,7 @@ public class BookApplication {
 			new FrontController().process();
 		} catch (NumberFormatException e) {
 			System.out.println("다시 입력하세요.");
+			return;
 		}
 
 	} 

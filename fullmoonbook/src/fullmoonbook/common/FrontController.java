@@ -126,7 +126,7 @@ public class FrontController {
 							}
 
 						} catch (Exception e) {
-							System.out.println("         달성률: 📕📕📕📕📕  0%");
+							System.out.println("         달성률: 📕📕📕📕📕  0 %");
 						}
 
 						int menu2 = mainView.startChallengeMenu(scanner);
@@ -138,7 +138,7 @@ public class FrontController {
 									int insertStatus = challController.insertChallengeStatus(iMember);
 									challengeView.insertStatusResult(insertStatus);
 								} else {
-									System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요");
+									System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요!");
 									continue;
 								}
 
@@ -211,16 +211,16 @@ public class FrontController {
 				case 4: // 마이페이지
 					System.out.println();
 					System.out.println();
-					System.out.println("\t" + vo.getId() + "님의 마이페이지");
+					System.out.println("\t\t\t 📌" + vo.getId() + "님의 챌린지 기록📌");
 
-					try {
+//					try {
 						List<BookVO> historys = bookController.getHistory(session.getId());
 						bookView.getHistory(historys);
 
-					} catch (Exception e) {
-						System.out.println("챌린지 기록이 없습니다");
-						continue;
-					}
+//					} catch (Exception e) {
+//						System.out.println("챌린지 기록이 없습니다.");
+//						continue;
+//					}
 
 //					System.out.println(dao.getChallenge("0003").getBookName() + challController.getGoal(session) + "%");
 					int menu5 = mainView.toMainMenu(scanner);
@@ -233,10 +233,19 @@ public class FrontController {
 					}
 
 				case 5: // 로그아웃
-					System.out.println("로그아웃 되었습니다");
-					mainRun = false;
-					continue;
+					System.out.println("로그아웃 되었습니다.");
+					int menu6 = mainView.toMainMenu(scanner);
+					switch (menu6) {
+					case 5:
+						mainView.welcome();
+						poemView.getPoems();
+					    mainView.loginMenu(scanner);
+					    break;
 
+					default:
+						break;
+					}
+					
 				default:
 					continue;
 

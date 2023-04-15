@@ -17,9 +17,9 @@ public class ReviewView {
 	}
 
 	public void getReviews(List<ReviewVO> reviews) throws Exception {
-		System.out.println("─────────────────────────────────────");
+		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 		System.out.println("\t    완독자 후기");
-		System.out.println("─────────────────────────────────────");
+		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 		System.out.println("    작성자     평점  내용");
 
 		int size = reviews.size(); // ArrayList의 크기를 구한다.
@@ -38,7 +38,7 @@ public class ReviewView {
 	}
 
 	public ReviewVO inputReview(Scanner scanner) {
-		System.out.print("내용: ");
+		System.out.print("리뷰 내용: ");
 		String content = scanner.nextLine();
 		System.out.print("평점(5점): ");
 		int grade = Integer.parseInt(scanner.nextLine());
@@ -47,9 +47,9 @@ public class ReviewView {
 
 	public void inputResult(int count) {
 		if (count > 0) {
-			System.out.println("정상적으로 입력되었습니다.");
+			System.out.println("리뷰가 정상적으로 등록되었습니다.");
 		} else {
-			System.out.println("정상적으로 입력되지 않았습니다.");
+			System.out.println("리뷰가 정상적으로 입력되지 않았습니다.");
 		}
 	}
 }
