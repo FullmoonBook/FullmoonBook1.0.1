@@ -39,6 +39,7 @@ public class FrontController {
 	private PoemController poemController = PoemController.getInstance();
 	private ReviewController reviewController = ReviewController.getInstance();
 	private SignController signController = SignController.getInstance();
+	ChallengeDAO dao = ChallengeDAO.getInstance(); //<<<<<<<<<<<<<<<<<<<<
 
 	private BookView bookView = BookView.getInstance();
 	private ChallengeView challengeView = ChallengeView.getInstance();
@@ -83,7 +84,7 @@ public class FrontController {
 				}
 			case 3: // 프로그램 종료 빠져나가기.
 				loginRun = false;
-			
+
 				break;
 			}
 			while (mainRun) {
@@ -91,10 +92,11 @@ public class FrontController {
 				int menu = mainView.mainMenu(scanner);
 				switch (menu) {
 				case 1:// 이번 보름 챌린지
-					while (nowRun) {
+					do {
+
 						BookVO nowBook = bookController.getNowChallenge("0003");
 						bookView.getNowChallenge(nowBook);
-						ChallengeDAO dao = ChallengeDAO.getInstance();
+
 						challenger = dao.getChallenger("0003");
 						System.out.println("\t    챌린저: " + challenger + "명");
 						System.out.println();
@@ -150,13 +152,12 @@ public class FrontController {
 						case 3: // 메인 페이지로
 							nowRun = false;
 							break;
-							
+
 						default:
 							continue;
-
 						}
-						break;
-					}
+
+					} while (nowRun);
 					break;
 
 				case 2: // 다음 챌린지
@@ -164,68 +165,44 @@ public class FrontController {
 					bookView.getNextChallenge(nextBook);
 					int menu5 = mainView.toMainMenu(scanner);
 					if (menu5 == 1) {
-						break;
+						continue;
 					}
 
 				case 3: // 후기
-					if (goal == 100) {
-						List<ReviewVO> reivews = reviewController.getReviews();
-						reviewView.getReviews(reivews);
-						ReviewVO iReview = reviewView.inputReview(scanner);
-						if (iReview != null) {
-							int insertReview = reviewController.insertReview(iReview);
-							reviewView.inputResult(insertReview);
+					List<ReviewVO> reivews = reviewController.getReviews();
+					reviewView.getReviews(reivews);
+					int menu4 = mainView.reviewMenu(scanner);
+					switch (menu4) {
+					case 1:
+						if (BookApplication.challengeGetSession().getGoal() == 100) {
+							ReviewVO iReview = reviewView.inputReview(scanner);
+							if (iReview != null) {
+								int insertReview = reviewController.insertReview(iReview);
+								reviewView.inputResult(insertReview);
+							}
 						} else {
 							System.out.println("완독하고 오세요...");
 						}
-						int menu4 = mainView.reviewMenu(scanner);
-						if (menu4 == 2) {
-							break;
-						} else if (BookApplication.challengeGetSession().getGoal() == 100) {
-						} else {
-							System.out.println("달성률 채우기");
-							break;
-						}
+					case 2:
+						continue;
 					}
 
-				
 				case 4: // 마이페이지
+					System.out.println("\t" + vo.getId() + "님의 마이페이지");
+					System.out.println(dao.getChallenge("0003").getBookName() + challController.getGoal(session) + "%");
+					break;
+					
+				case 5: // 로그아웃
 					System.out.println("로그아웃 되었습니다");
 					mainRun = false;
 					continue;
-
+					
 				default:
 					continue;
-				}
-			}
-		}
-	}
-}
 
-//	//	joinController.join(scanner);
-//
-//
-//		case 2:
-//			MemberVO vo = signController.signIn(scanner);
-//
-//			List<ReviewVO> reivews = reviewController.getReviews();
-//			reviewView.getReviews(reivews);
-//
-//		}
-//	}
-//}
+				} // switch menu
+			} // while(mainRun)
+		} // while(login run)
 
-//			MemberVO vo = signController.signIn(scanner);
-//
-//			ChallengeVO iMember = challengeView.insertChallengeStatus(scanner);
-//			if (iMember != null) {
-//				int insertStatus = challController.insertChallengeStatus(iMember);
-//				challengeView.insertStatusResult(insertStatus);
-//			} else if (iMember == null) {
-//				ChallengeDAO dao = new ChallengeDAO();
-//				int challenger = dao.getChallenger("0003");
-//				System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요");
-//				// 다시 이전 페이지 호출s
-//
-//			}
-//
+	} // process
+} // class

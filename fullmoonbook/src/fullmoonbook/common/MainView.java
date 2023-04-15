@@ -14,7 +14,10 @@ public class MainView {
 
 	public void welcome() {
 		System.out.println("\n────────────────────────────────────────────────────");
-		System.out.println("\t     ₍ᐢ｡ ˬ ｡ᐢ₎\n\t   보름 한 책");
+		System.out.println("    /) /)");
+		System.out.println("    (｡･-･)♥");
+		System.out.println("🥕보름 한 책🥕");
+		System.out.println();
 	}
 
 	public int loginMenu(Scanner scanner) throws Exception {
