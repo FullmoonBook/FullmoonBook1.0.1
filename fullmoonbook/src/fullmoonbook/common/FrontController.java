@@ -234,13 +234,18 @@ public class FrontController {
 
 				case 5: // 로그아웃
 					System.out.println("로그아웃 되었습니다.");
-					int menu6 = mainView.toMainMenu(scanner);
+				
+					int menu6 = mainView.loginMenu(scanner);
 					switch (menu6) {
 					case 5:
 						mainView.welcome();
 						poemView.getPoems();
 					    mainView.loginMenu(scanner);
 					    break;
+					case 3:
+						System.out.println("프로그램을 종료합니다.");
+						mainRun = false;
+						break;
 
 					default:
 						break;
