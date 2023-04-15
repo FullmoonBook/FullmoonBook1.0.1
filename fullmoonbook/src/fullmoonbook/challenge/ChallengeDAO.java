@@ -14,7 +14,6 @@ public class ChallengeDAO {
 	private static ChallengeDAO instance = new ChallengeDAO(); // 싱글톤
 	private ChallengeVO session = BookApplication.challengeGetSession();
 
-
 	public ChallengeDAO() {
 	}
 
@@ -25,7 +24,8 @@ public class ChallengeDAO {
 	// 챌린지 정보 가져오기
 	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
 		builder.append("    book_name,");
@@ -58,9 +58,10 @@ public class ChallengeDAO {
 		return vo;
 	}
 
-	//챌린지 시작 업데이트
+	// 챌린지 시작 업데이트
 	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("INSERT INTO challenge (");
 		builder.append("    id,");
@@ -80,7 +81,6 @@ public class ChallengeDAO {
 		statement.setString(2, vo.getBookNo());
 		statement.setString(3, vo.getStatus());
 		statement.setInt(4, vo.getGoal());
-		
 
 		int count = statement.executeUpdate();
 		statement.close();
@@ -88,16 +88,18 @@ public class ChallengeDAO {
 		return count;
 
 	}
-    // 달성률 업데이트
+
+	// 달성률 업데이트
 	public int updateGoal(ChallengeVO vo) throws Exception {
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4", "java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("UPDATE ");
 		builder.append("    challenge ");
 		builder.append("SET ");
 		builder.append("    goal = ? ");
 		builder.append("WHERE ");
-		builder.append("    id = ? "); 
+		builder.append("    id = ? ");
 		builder.append("AND ");
 		builder.append(" book_no = ? ");
 
@@ -112,8 +114,8 @@ public class ChallengeDAO {
 		statement.setInt(1, (int) result);
 		statement.setString(2, vo.getId());
 		statement.setString(3, vo.getBookNo());
-		
-		session.setGoal((int)result);
+
+		session.setGoal((int) result);
 
 		int count = statement.executeUpdate();
 		statement.close();
@@ -121,11 +123,12 @@ public class ChallengeDAO {
 		return count;
 
 	}
-	
-    // 챌린저 수 구하기
+
+	// 챌린저 수 구하기
 	public int getChallenger(String countBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
 		builder.append("    COUNT(*) ");
@@ -141,11 +144,10 @@ public class ChallengeDAO {
 		statement.setString(2, "y");
 
 		ResultSet resultSet = statement.executeQuery();
-	    int count = 0;
+		int count = 0;
 		if (resultSet.next()) {
 			count = resultSet.getInt(1);
 		}
-		
 
 		resultSet.close();
 		statement.close();
@@ -153,9 +155,11 @@ public class ChallengeDAO {
 		return count;
 	}
 
+	// 챌린지 상태 가져오기
 	public String getStatus(ChallengeVO vo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
 		builder.append("    status ");
@@ -174,15 +178,18 @@ public class ChallengeDAO {
 			String status = resultSet.getString("status");
 			vo1 = new ChallengeVO(status);
 		}
-		
+
 		resultSet.close();
 		statement.close();
 		connection.close();
 		return vo1.getStatus();
 	}
+
+	// 달성률 가져오기
 	public int getGoal(ChallengeVO vo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4","java");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
 		builder.append("    goal ");
@@ -199,7 +206,8 @@ public class ChallengeDAO {
 		ChallengeVO vo2 = null;
 		if (resultSet.next()) {
 			int goal = resultSet.getInt("goal");
-			vo2 = new ChallengeVO(goal);
+			String status = "y";
+			vo2 = new ChallengeVO(status, goal);
 		}
 		session.setGoal(vo2.getGoal());
 		resultSet.close();

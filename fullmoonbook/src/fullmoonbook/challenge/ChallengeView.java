@@ -62,7 +62,7 @@ public class ChallengeView {
 			return new ChallengeVO(nowPage);
 		} else {
 			System.out.println("범위 밖의 숫자입니다. 다시 입력해 주세요.");
-			return null;
+			return new ChallengeVO(0); //null로 넣으면 nullpointer 오류
 		}
 	}
 

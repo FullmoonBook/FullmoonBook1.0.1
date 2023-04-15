@@ -26,10 +26,6 @@ public class ChallengeService {
 	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
 		return dao.getChallenge(searchBookNo);
 	}
-	public int getGoal(ChallengeVO vo) throws Exception {
-		return dao.getGoal(vo);
-		
-	}
 	
 	public String getStatus(ChallengeVO vo) throws Exception {
 		ChallengeVO status = new ChallengeVO();
@@ -45,6 +41,8 @@ public class ChallengeService {
 		iStatus.setGoal(BookApplication.challengeGetSession().getGoal());
 		return dao.insertChallengeStatus(iStatus);
 	}
+	
+	
 	public int updateGoal(ChallengeVO vo) throws Exception {
 		ChallengeVO goal = new ChallengeVO();
 		goal.setId(BookApplication.getSession().getId());
@@ -52,6 +50,9 @@ public class ChallengeService {
 		goal.setNowPage(BookApplication.challengeGetSession().getNowPage());
 		goal.setPage(165);
 		return dao.updateGoal(goal);
+	}
+	public int getGoal(ChallengeVO vo) throws Exception {
+		return dao.getGoal(vo);
 	}
 
 	

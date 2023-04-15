@@ -1,14 +1,15 @@
-package fullmoonbook.book;
+package fullmoonbook.common;
 
 import java.util.List;
 import java.util.Scanner;
 
+import fullmoonbook.book.BookController;
+import fullmoonbook.book.BookVO;
+import fullmoonbook.book.BookView;
 import fullmoonbook.challenge.ChallengeController;
 import fullmoonbook.challenge.ChallengeDAO;
 import fullmoonbook.challenge.ChallengeVO;
 import fullmoonbook.challenge.ChallengeView;
-import fullmoonbook.common.BookApplication;
-import fullmoonbook.common.MainView;
 import fullmoonbook.join.JoinController;
 import fullmoonbook.join.JoinView;
 import fullmoonbook.join.MemberVO;
@@ -74,7 +75,6 @@ public class FrontController {
 				joinController.join(scanner);
 			case 2:
 				vo = signController.signIn(scanner);
-				System.out.println(challController.getStatus(session));
 				while (vo == null) {
 					signController.signIn(scanner);
 					break;
@@ -100,6 +100,7 @@ public class FrontController {
 						System.out.println("\t    챌린저: " + challenger + "명");
 						System.out.println();
 						goal = challController.getGoal(session);
+						System.out.println(goal); //로그
 						if (goal == 100) {
 							System.out.println("         달성률: ■■■■■ " + goal + " %");
 						} else if (goal >= 80) {
@@ -137,9 +138,11 @@ public class FrontController {
 							break;
 
 						case 2: // 페이지 입력
+							System.out.println(challController.getStatus(session)); //로그
 							if (challController.getStatus(session).equals("y")) {
 								ChallengeVO iPage = challengeView.updateGoal(scanner);
-								challController.updateGoal(iPage);
+								int updateGoal = challController.updateGoal(iPage);
+								challengeView.updateGoalResult(updateGoal);
 							} else {
 								System.out.println("먼저 챌린지를 시작해 주세요.");
 								break;

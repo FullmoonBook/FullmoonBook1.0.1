@@ -1,6 +1,5 @@
 package fullmoonbook.common;
 
-import fullmoonbook.book.FrontController;
 import fullmoonbook.challenge.ChallengeVO;
 import fullmoonbook.join.MemberVO;
 

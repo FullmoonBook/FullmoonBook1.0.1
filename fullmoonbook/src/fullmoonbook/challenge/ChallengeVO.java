@@ -23,12 +23,12 @@ public class ChallengeVO {
 	public ChallengeVO(String status) {
 		this.status = status;
 	}
-	public ChallengeVO(int goal) {
-		this.goal = goal;
-	}
-//	public ChallengeVO(int nowPage) {
-//		this.nowPage = nowPage;
-//	}
+//	public ChallengeVO(int goal) {
+//		this.goal = goal;
+//	} //살리면 달성률은 가져오는데 페이지 입력이 0으로 됨.
+	public ChallengeVO(int nowPage) {
+		this.nowPage = nowPage;
+	} //살리면 페이지 입력은 되는데 달성률을 못 가져옴.
 	public ChallengeVO(String status, int goal) {
 		this.status = status;
 		this.goal = goal;
