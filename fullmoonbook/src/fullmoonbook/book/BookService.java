@@ -26,7 +26,6 @@ public class BookService {
 		return dao.getNextChallenge(nextChallengeBookNo);
 	}
 	public List<BookVO> getHistory(String id) throws Exception {
-		System.out.println(id);
 		return dao.getHistory(id);
 	}
 
