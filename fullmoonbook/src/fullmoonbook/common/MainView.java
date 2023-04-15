@@ -30,9 +30,9 @@ public class MainView {
 
 	public int mainMenu(Scanner scanner) {
 		System.out.println();
-		System.out.println();
-		System.out.println("\t1. 현재 챌린지");
-		System.out.println("\t2. 다음 챌린지");
+		System.out.println("\t1. 이번 보름 챌린지");
+		System.out.println("\t2. 이번 보름 책 리뷰");
+		System.out.println("\t2. 다음 보름 챌린지");
 		System.out.println("\t3. 마이페이지");
 		System.out.println("\t4. 로그아웃");
 		System.out.println("\n────────────────────────────────────────────────────");

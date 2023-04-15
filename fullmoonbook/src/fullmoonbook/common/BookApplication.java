@@ -14,7 +14,7 @@ public class BookApplication {
 			System.out.println("다시 입력하세요.");
 		}
 
-	} edddd
+	}
 
 	/**
 	 * 로그인한 정보를 가져오는 메소드
