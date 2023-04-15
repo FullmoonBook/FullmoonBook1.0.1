@@ -53,8 +53,7 @@ public class BookDAO {
 		builder.append("  page, ");
 		builder.append("  genre, ");
 		builder.append("  publisher, ");
-		builder.append("  period, ");
-		builder.append("  challenger ");
+		builder.append("  period ");
 		builder.append("FROM ");
 		builder.append("  book ");
 		builder.append("WHERE ");
@@ -74,8 +73,7 @@ public class BookDAO {
 			String genre = resultSet.getString("genre");
 			String publisher = resultSet.getString("publisher");
 			String period = resultSet.getString("period");
-			int challenger = resultSet.getInt("challenger");
-			vo = new BookVO(bookNo, bookName, subtitle, author, page, genre, publisher, period, challenger);
+			vo = new BookVO(bookNo, bookName, subtitle, author, page, genre, publisher, period);
 		}
 		resultSet.close();
 		statement.close();
@@ -99,8 +97,7 @@ public class BookDAO {
 		builder.append("  page, ");
 		builder.append("  genre, ");
 		builder.append("  publisher, ");
-		builder.append("  period, ");
-		builder.append("  challenger ");
+		builder.append("  period ");
 		builder.append("FROM ");
 		builder.append("  book ");
 		builder.append("WHERE ");
@@ -120,8 +117,7 @@ public class BookDAO {
 			String genre = resultSet.getString("genre");
 			String publisher = resultSet.getString("publisher");
 			String period = resultSet.getString("period");
-			int challenger = resultSet.getInt("challenger");
-			vo = new BookVO(bookNo, bookName, subtitle, author, page, genre, publisher, period, challenger);
+			vo = new BookVO(bookNo, bookName, subtitle, author, page, genre, publisher, period);
 		}
 		resultSet.close();
 		statement.close();

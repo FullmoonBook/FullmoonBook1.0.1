@@ -9,24 +9,23 @@ public class BookVO {
 	private String genre;
 	private String publisher;
 	private String period;
-	private int challenger;
+
 
 	public BookVO() {
 	}
 
 	// 이번 보름 챌린지용
-	public BookVO(String bookNo, String bookName, String subtitle, String author, int page, String genre,
-			String publisher, String period, int challenger) {
-		this.bookNo = bookNo;
-		this.bookName = bookName;
-		this.subtitle = subtitle;
-		this.author = author;
-		this.page = page;
-		this.genre = genre;
-		this.publisher = publisher;
-		this.period = period;
-		this.challenger = challenger;
-	}
+//	public BookVO(String bookNo, String bookName, String subtitle, String author, int page, String genre,
+//			String publisher, String period) {
+//		this.bookNo = bookNo;
+//		this.bookName = bookName;
+//		this.subtitle = subtitle;
+//		this.author = author;
+//		this.page = page;
+//		this.genre = genre;
+//		this.publisher = publisher;
+//		this.period = period;
+//	}
 
 	// 다음 보름 챌린지용
 	public BookVO(String bookNo, String bookName, String subtitle, String author, int page, String genre,
@@ -111,13 +110,6 @@ public class BookVO {
 		this.period = period;
 	}
 
-	public int getChallenger() {
-		return challenger;
-	}
-
-	public void setChallenger(int challenger) {
-		this.challenger = challenger;
-	}
 
 	public String printA() {
 		return String.format("%s\n%s", bookName, author);

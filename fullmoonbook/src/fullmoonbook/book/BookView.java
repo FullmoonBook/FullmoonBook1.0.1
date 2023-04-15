@@ -24,7 +24,6 @@ public class BookView {
 		System.out.println("\t  이번 보름 챌린지");
 		System.out.println(vo.printBook(false));
 		System.out.println();
-		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 	}
 
 	public void getNextChallenge(BookVO vo) {
@@ -33,7 +32,6 @@ public class BookView {
 		System.out.println("\t  다음 보름 챌린지");
 		System.out.println(vo.printBook(true));
 		System.out.println();
-		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 	}
 
 	public void getChallenge(BookVO vo) {
@@ -42,7 +40,6 @@ public class BookView {
 		System.out.println("\t  현재 챌린지");
 		System.out.println(vo.printA());
 		System.out.println();
-		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 	}
 
 	public void getHistory(List<BookVO> historys) {
