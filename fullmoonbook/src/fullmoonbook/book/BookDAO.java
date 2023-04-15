@@ -9,23 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fullmoonbook.challenge.ChallengeDAO;
+import fullmoonbook.challenge.ChallengeVO;
+import fullmoonbook.common.BookApplication;
 
 public class BookDAO {
-	public static void main(String[] args) {
-		try {
-			BookDAO dao = new BookDAO();
-			BookVO book1 = dao.getNowChallenge("0003");
-			BookVO book2 = dao.getNextChallenge("0004");
 
-			System.out.println(book1.printA());
-
-
-
-		} catch (Exception e) {
-			System.err.println("에러" + e.getMessage());
-		}
-
-	}
+//	public static void main(String[] args) {
+//		try {
+//			BookDAO dao = new BookDAO();
+//			System.out.println(dao.getHistory("1"));
+//		
+//
+//		} catch (Exception e) {
+//			System.err.println("에러" + e.getMessage());
+//		}
+//
+//	}
 
 	private static BookDAO instance = new BookDAO();
 
@@ -128,5 +127,41 @@ public class BookDAO {
 		statement.close();
 		connection.close();
 		return vo;
+	}
+
+	
+	
+	public List<BookVO> getHistory(String id) throws Exception {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
+		String user = "pc26_4";
+		String password = "java";
+		Connection connection = DriverManager.getConnection(url, user, password);
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("SELECT ");
+		builder.append("    b.book_name,");
+		builder.append("    b.period ");
+		builder.append("FROM");
+		builder.append("    book      b,");
+		builder.append("    challenge c ");
+		builder.append("WHERE");
+		builder.append("        b.book_no = c.book_no");
+		builder.append("    AND rtrim(c.id) = ?");
+		String sql = builder.toString();
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, id);
+		//
+		ResultSet resultSet = statement.executeQuery();
+		List<BookVO> list = new ArrayList<>();
+		while (resultSet.next()) {
+			String bookName = resultSet.getString("book_name");
+			String period = resultSet.getString("period");
+			list.add(new BookVO(bookName, period));
+		}
+		resultSet.close();
+		statement.close();
+		connection.close();
+		return list;
 	}
 }

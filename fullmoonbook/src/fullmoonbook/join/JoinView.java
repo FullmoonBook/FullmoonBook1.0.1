@@ -43,7 +43,7 @@ public class JoinView {
      */
     public boolean resultJoin(int result, Scanner scanner) {
         if (result > 0) {
-            System.out.println("회원가입이 완료되었습니다. 로그인해주세요.");
+            System.out.println("\n\n\n회원가입이 완료되었습니다. 로그인해주세요.");            
             return false;
         }
         System.out.print("회원 가입 실패! 다시 회원가입을 하시겠습니까?(y 또는 n을 입력): ");

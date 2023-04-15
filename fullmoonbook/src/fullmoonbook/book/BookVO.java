@@ -41,6 +41,12 @@ public class BookVO {
 		this.period = period;
 	}
 
+	// 챌린지 기록용
+	public BookVO(String bookName, String period) {
+		this.bookName = bookName;
+		this.period = period;
+	}
+
 	public String getBookNo() {
 		return bookNo;
 	}
@@ -123,9 +129,14 @@ public class BookVO {
 			return String.format("\t    %s\n\n %s\n   %s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
 					genre, publisher, period);
 		} else {
-			return String.format("\t   %s\n\n %s\n%s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle,
-					author, page, genre, publisher, period);
+			return String.format("\t   %s\n\n %s\n%s, %s쪽, %s, %s \n    기간: %s", bookName, subtitle, author, page,
+					genre, publisher, period);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s - %s", bookName, period);
 	}
 
 }

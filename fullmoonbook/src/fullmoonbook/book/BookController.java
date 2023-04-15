@@ -1,5 +1,9 @@
 package fullmoonbook.book;
 
+import java.util.List;
+
+import fullmoonbook.common.BookApplication;
+
 public class BookController {
 	private static BookController instance = new BookController();
 
@@ -20,6 +24,9 @@ public class BookController {
 	}
 	public BookVO getChallenge(String nowChallengeBookNo) throws Exception {
 		return service.getNowChallenge(nowChallengeBookNo);
+	}
+	public List<BookVO> getHistory(String id) throws Exception {
+		return service.getHistory(id);
 	}
 
 }

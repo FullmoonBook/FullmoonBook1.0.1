@@ -4,6 +4,7 @@ import java.util.List;
 
 import fullmoonbook.book.BookDAO;
 import fullmoonbook.book.BookVO;
+import fullmoonbook.common.BookApplication;
 
 public class BookService {
 	private static BookService instance = new BookService();
@@ -24,4 +25,9 @@ public class BookService {
 	public BookVO getNextChallenge(String nextChallengeBookNo) throws Exception {
 		return dao.getNextChallenge(nextChallengeBookNo);
 	}
+	public List<BookVO> getHistory(String id) throws Exception {
+		System.out.println(id);
+		return dao.getHistory(id);
+	}
+
 }

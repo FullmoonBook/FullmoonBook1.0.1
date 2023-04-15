@@ -1,5 +1,6 @@
 package fullmoonbook.book;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class BookView {
@@ -35,6 +36,12 @@ public class BookView {
 		System.out.println("\t  현재 챌린지");
 		System.out.println("─────────────────────────────────────");
 		System.out.println(vo.printA());
+	}
+	public void getHistory (List<BookVO> historys) {
+		System.out.println("챌린지 기록");
+		for (BookVO history : historys) {
+			System.out.println(history);
+		}
 	}
 	
 }

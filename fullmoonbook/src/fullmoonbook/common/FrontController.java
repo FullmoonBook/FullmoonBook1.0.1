@@ -104,29 +104,29 @@ public class FrontController {
 							if (challController.getStatus(session).equals("y")) {
 								goal = challController.getGoal(session);
 								if (goal == 100) {
-									System.out.println("         달성률: ■■■■■ " + goal + " %");
-								} else if (goal >= 80) {
-									System.out.println("         달성률: ■■■■□ " + goal + " %");
+							         System.out.println("         달성률: 📘📘📘📘📘 " + goal + " %");
+							      } else if (goal >= 80) {
+							         System.out.println("         달성률: 📘📘📘📘📕 " + goal + " %");
 
-								} else if (goal >= 60) {
-									System.out.println("         달성률: ■■■□□ " + goal + " %");
+							      } else if (goal >= 60) {
+							         System.out.println("         달성률: 📘📘📘📕📕 " + goal + " %");
 
-								} else if (goal >= 40) {
-									System.out.println("         달성률: ■■□□□ " + goal + " %");
+							      } else if (goal >= 40) {
+							         System.out.println("         달성률: 📘📘📕📕📕 " + goal + " %");
 
-								} else if (goal >= 20) {
-									System.out.println("         달성률: ■□□□□ " + goal + " %");
+							      } else if (goal >= 20) {
+							         System.out.println("         달성률: 📘📕📕📕📕 " + goal + " %");
 
-								} else {
-									System.out.println("         달성률: □□□□□ " + goal + " %");
-								}
+							      } else {
+							         System.out.println("         달성률: 📕📕📕📕📕 " + goal + " %");
+							      }
 							} else {
 
-								System.out.println("         달성률: □□□□□ " + goal + " %");
+								System.out.println("         달성률: 📕📕📕📕📕 " + goal + " %");
 							}
 
 						} catch (Exception e) {
-							System.out.println("         달성률: □□□□□  0%");
+							System.out.println("         달성률: 📕📕📕📕📕  0%");
 						}
 
 						int menu2 = mainView.startChallengeMenu(scanner);
@@ -204,7 +204,16 @@ public class FrontController {
 					System.out.println();
 					System.out.println();
 					System.out.println("\t" + vo.getId() + "님의 마이페이지");
-					System.out.println(dao.getChallenge("0003").getBookName() + challController.getGoal(session) + "%");
+					try {
+						List<BookVO> historys = bookController.getHistory(session.getId());
+						bookView.getHistory(historys);
+						
+					} catch (Exception e) {
+						System.out.println("챌린지 기록이 없습니다");
+						continue;
+					}
+					
+//					System.out.println(dao.getChallenge("0003").getBookName() + challController.getGoal(session) + "%");
 					int menu5 = mainView.toMainMenu(scanner);
 					switch (menu5) {
 					case 1:
