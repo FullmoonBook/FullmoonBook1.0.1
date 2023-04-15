@@ -14,6 +14,7 @@ public class MainView {
 
 	public void welcome() {
 		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
+		System.out.println();
 		System.out.println("\t\t\t\t    /) /)");
 		System.out.println("\t\t\t\t    (｡･-･)♥");
 		System.out.println("\t\t\t\t🥕보름 한 책🥕");
@@ -22,9 +23,10 @@ public class MainView {
 
 	public int loginMenu(Scanner scanner) throws Exception {
 		System.out.println();
-		System.out.println("\t\t\t1. 회원가입");
-		System.out.println("\t\t\t2. 로그인");
-		System.out.println("\t\t\t3. 프로그램 종료");
+		System.out.println();
+		System.out.println("\t\t\t     1. 회원가입");
+		System.out.println("\t\t\t     2. 로그인");
+		System.out.println("\t\t\t     3. 프로그램 종료");
 		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 		System.out.print("메뉴를 선택하세요> ");
 		return Integer.parseInt(scanner.nextLine());
@@ -62,7 +64,7 @@ public class MainView {
 	public int toMainMenu(Scanner scanner) {
 		System.out.println();
 		System.out.println();
-		System.out.println("\t\t\t1. 메인 페이지");
+		System.out.println("\t\t\t   1. 메인 페이지");
 		System.out.println();
 		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 		System.out.print("메뉴를 선택하세요> ");
@@ -71,9 +73,9 @@ public class MainView {
 
 	public int startChallengeMenu(Scanner scanner) {
 		System.out.println();
-		System.out.println("\t\t\t1. 챌린지 시작");
-		System.out.println("\t\t\t2. 페이지 입력");
-		System.out.println("\t\t\t3. 메인 페이지");
+		System.out.println("\t\t\t  1. 챌린지 시작");
+		System.out.println("\t\t\t  2. 페이지 입력");
+		System.out.println("\t\t\t  3. 메인 페이지");
 		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 		System.out.print("메뉴를 선택하세요> ");
 		return Integer.parseInt(scanner.nextLine());
@@ -82,8 +84,9 @@ public class MainView {
 	// 달성률이 100일 때
 	public int reviewMenu(Scanner scanner) {
 		System.out.println();
-		System.out.println("\t\t\t1. 리뷰 작성");
-		System.out.println("\t\t\t2. 메인 페이지");
+		System.out.println();
+		System.out.println("\t\t\t    1. 리뷰 작성");
+		System.out.println("\t\t\t    2. 메인 페이지");
 		System.out.println();
 		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
 		System.out.print("메뉴를 선택하세요> ");

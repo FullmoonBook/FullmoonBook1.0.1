@@ -49,6 +49,6 @@ public class PoemVO {
 	}
 	
 	public String toString() {
-		return String.format("%s\n%s ─ %s", verse, poet, title );
+		return String.format("       %s\n       %s ─ %s", verse, poet, title );
 	}
 }

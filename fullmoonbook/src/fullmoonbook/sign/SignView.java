@@ -17,6 +17,7 @@ public class SignView {
 
 	public MemberVO inputLoginInfo(Scanner scanner) {
 		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
+		System.out.println();
 		System.out.println("\t\t\t\t    /) /)");
 		System.out.println("\t\t\t\t    (｡･-･)♥");
 		System.out.println("\t\t\t\t🥕보름 한 책🥕");
@@ -24,7 +25,7 @@ public class SignView {
 		System.out.println();
 		System.out.println();
 		System.out.println();
-		System.out.println("   아이디와 비밀번호를 입력하세요.");
+		System.out.println("\t\t\t아이디와 비밀번호를 입력하세요.");
 		System.out.println();
 		System.out.println();
 		System.out.println();
