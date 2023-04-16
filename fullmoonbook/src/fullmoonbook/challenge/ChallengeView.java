@@ -59,14 +59,14 @@ public class ChallengeView {
 		if (nowPage > 0 && nowPage <= 165) {
 			return new ChallengeVO(nowPage);
 		} else {
-			throw new NullPointerException();//null로 넣으면 nullpointer 오류
+			throw new NumberFormatException();//null로 넣으면 nullpointer 오류
 		}
 	}
 
 	public void updateGoalResult(int count) {
 		if (count > 0) {
 			System.out.println("\n\t\t\t 페이지가 정상적으로 입력되었습니다.");
-			System.out.println("\n\t\t\t\t   ⚑ " + BookApplication.challengeGetSession().getNowPage() + " / 165쪽");
+			System.out.println("\n\t\t\t\t   ⚑ " + BookApplication.challengeGetSession().getNowPage() + " / 165 쪽");
 		} else {
 			System.out.println("\n\t\t\t  정상적으로 입력되지 않았습니다.");
 		}

@@ -162,7 +162,7 @@ public class FrontController {
 									continue;
 
 								}
-							} catch (NullPointerException e) {
+							} catch (NumberFormatException e) {
 								System.out.println("\n\t\t       범위 밖의 숫자입니다. 다시 입력해 주세요.");
 								continue;
 							} catch (Exception e) {
@@ -198,15 +198,20 @@ public class FrontController {
 					int menu4 = mainView.reviewMenu(scanner);
 					switch (menu4) {
 					case 1:
-						if (challController.getGoal(session) == 100) {
-							ReviewVO iReview = reviewView.inputReview(scanner);
-							if (iReview != null) {
-								int insertReview = reviewController.insertReview(iReview);
-								reviewView.inputResult(insertReview);
+						try {
+							
+							if (challController.getGoal(session) == 100) {
+								ReviewVO iReview = reviewView.inputReview(scanner);
+								if (iReview != null) {
+									int insertReview = reviewController.insertReview(iReview);
+									reviewView.inputResult(insertReview);
+								}
 							}
-						} else {
-							System.out.println("\n\t\t\t   챌린지 달성 후 작성이 가능합니다.");
+						} catch (Exception e) {
+							System.out.println("\n\t\t\t챌린지 달성 후 작성이 가능합니다.");
+							
 						}
+						
 					case 2:
 						continue;
 					}
