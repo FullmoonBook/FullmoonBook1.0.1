@@ -51,9 +51,9 @@ public class ReviewView {
 
 	public void inputResult(int count) {
 		if (count > 0) {
-			System.out.println("\n\t\t\t리뷰가 정상적으로 등록되었습니다.\n");
+			System.out.println("\n\t\t\t 리뷰가 정상적으로 등록되었습니다.");
 		} else {
-			System.out.println("\n\t\t\t리뷰가 정상적으로 입력되지 않았습니다.\n");
+			System.out.println("\n\t\t\t리뷰가 정상적으로 입력되지 않았습니다.");
 		}
 	}
 }
