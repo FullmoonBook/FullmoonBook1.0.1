@@ -23,20 +23,22 @@ public class ReviewView {
 		System.out.println();
 		System.out.println();
 		System.out.println("    작성자     평점  내용");
-
-		int size = reviews.size(); // ArrayList의 크기를 구한다.
-
-		if (size < 5) { // ArrayList의 크기가 5보다 작은 경우
-			for (int i = 0; i < size; i++) {
-				Object element = reviews.get(i); // ArrayList의 인덱스에 해당하는 객체를 가져온다.
-				System.out.println(element); // 해당 객체를 출력한다.
+		if(reviews !=null) {
+			int size = reviews.size(); // ArrayList의 크기를 구한다.
+			
+			if (size < 5) { // ArrayList의 크기가 5보다 작은 경우
+				for (int i = 0; i < size; i++) {
+					Object element = reviews.get(i); // ArrayList의 인덱스에 해당하는 객체를 가져온다.
+					System.out.println(element); // 해당 객체를 출력한다.
+				}
+			} else { // ArrayList의 크기가 5 이상인 경우
+				for (int i = size - 5; i < size; i++) {
+					Object element = reviews.get(i); // ArrayList의 인덱스에 해당하는 객체를 가져온다.
+					System.out.println(element); // 해당 객체를 출력한다.
+				}
 			}
-		} else { // ArrayList의 크기가 5 이상인 경우
-			for (int i = size - 5; i < size; i++) {
-				Object element = reviews.get(i); // ArrayList의 인덱스에 해당하는 객체를 가져온다.
-				System.out.println(element); // 해당 객체를 출력한다.
-			}
-		}
+		} 
+
 	}
 
 	public ReviewVO inputReview(Scanner scanner) {
@@ -49,9 +51,9 @@ public class ReviewView {
 
 	public void inputResult(int count) {
 		if (count > 0) {
-			System.out.println("\n\t\t리뷰가 정상적으로 등록되었습니다.\n");
+			System.out.println("\n\t\t\t리뷰가 정상적으로 등록되었습니다.\n");
 		} else {
-			System.out.println("\n\t\t리뷰가 정상적으로 입력되지 않았습니다.\n");
+			System.out.println("\n\t\t\t리뷰가 정상적으로 입력되지 않았습니다.\n");
 		}
 	}
 }
