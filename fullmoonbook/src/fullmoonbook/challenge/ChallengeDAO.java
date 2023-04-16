@@ -115,7 +115,7 @@ public class ChallengeDAO {
 		statement.setString(2, vo.getId());
 		statement.setString(3, vo.getBookNo());
 
-		session.setGoal((int) result);
+		//session.setGoal((int) result);
 
 		int count = statement.executeUpdate();
 		statement.close();

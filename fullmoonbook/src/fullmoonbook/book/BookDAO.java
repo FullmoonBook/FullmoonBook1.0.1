@@ -134,7 +134,6 @@ public class BookDAO {
 		String password = "java";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		StringBuilder builder = new StringBuilder();
-
 		builder.append("SELECT ");
 		builder.append("    b.book_name,");
 		builder.append("    b.period ");
@@ -143,7 +142,7 @@ public class BookDAO {
 		builder.append("    challenge c ");
 		builder.append("WHERE");
 		builder.append("        b.book_no = c.book_no");
-		builder.append("    AND rtrim(c.id) = ?");
+		builder.append("    AND rtrim(c.id) = rtrim(?) ");
 		String sql = builder.toString();
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, id);

@@ -62,7 +62,7 @@ public class MainView {
 	public int toMainMenu(Scanner scanner) {
 		System.out.println();
 		System.out.println();
-		System.out.println("\t\t\t\t  1. 메인 페이지");
+		System.out.println("\t\t\t\t   1. 메인 페이지");
 		System.out.println("\n\n──────────────────────────────────────────────────────────────────────────────────────");
 		System.out.print("\n   🌒 메뉴를 선택하세요 ▹ ");
 		return Integer.parseInt(scanner.nextLine());

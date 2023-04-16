@@ -40,18 +40,18 @@ public class ReviewView {
 	}
 
 	public ReviewVO inputReview(Scanner scanner) {
-		System.out.print("리뷰 내용: ");
+		System.out.print("\n   🌒 리뷰 내용 ▹ ");
 		String content = scanner.nextLine();
-		System.out.print("평점(5점): ");
+		System.out.print("\n   🌒 평점(5점) ▹ ");
 		int grade = Integer.parseInt(scanner.nextLine());
 		return new ReviewVO(content, grade);
 	}
 
 	public void inputResult(int count) {
 		if (count > 0) {
-			System.out.println("리뷰가 정상적으로 등록되었습니다.");
+			System.out.println("\n\t\t리뷰가 정상적으로 등록되었습니다.\n");
 		} else {
-			System.out.println("리뷰가 정상적으로 입력되지 않았습니다.");
+			System.out.println("\n\t\t리뷰가 정상적으로 입력되지 않았습니다.\n");
 		}
 	}
 }

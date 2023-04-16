@@ -1,5 +1,7 @@
 package fullmoonbook.book;
 
+import java.util.List;
+
 public class BookVO {
 	private String bookNo;
 	private String bookName;
@@ -111,24 +113,23 @@ public class BookVO {
 	}
 
 
-	public String printA() {
-		return String.format("%s\n%s", bookName, author);
-
-	}
+//	public String printA() {
+//		return String.format("%s\n%s", bookName, author);
+//
+//	}
 
 	public String printBook(boolean flag) {
 		if (flag) {
-			return String.format("\n\t\t\t\t    ▸%s◂\n\n\t\t\t %s\n   \t\t\t   %s, %s쪽, %s, %s \n\n    \t\t\t    기간: %s", bookName, subtitle, author, page,
+			return String.format("\n\t\t\t\t   ▸ %s ◂\n\n\t\t\t %s\n   \t\t\t   %s, %s쪽, %s, %s \n\n    \t\t\t    기간: %s", bookName, subtitle, author, page,
 					genre, publisher, period);
 		} else {
-			return String.format("\t\t\t\t  ▸%s◂\n\n\t\t\t %s\n \t\t\t%s, %s쪽, %s, %s \n    \t\t\t    기간: %s", bookName, subtitle, author, page,
+			return String.format("\t\t\t\t ▸ %s ◂\n\n\t\t\t %s\n \t\t\t%s, %s쪽, %s, %s \n    \t\t\t    기간: %s", bookName, subtitle, author, page,
 					genre, publisher, period);
 		}
 	}
 
-	@Override
-	public String toString() {
-		return String.format("%s - %s", bookName, period);
+	public String printHistory(List<BookVO> vo) {
+		return String.format("\n\t\t%s  %s   ",bookName, period);
 	}
 
 }

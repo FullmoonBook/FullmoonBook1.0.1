@@ -53,14 +53,13 @@ public class ChallengeView {
 
 	}
 
-	public ChallengeVO updateGoal(Scanner scanner) {
+	public ChallengeVO updateGoal(Scanner scanner) throws Exception  {
 		System.out.print("\n   🌒 현재 읽은 페이지를 입력해 주세요(1~165쪽) ▹ ");
 		int nowPage = Integer.parseInt(scanner.nextLine());
 		if (nowPage > 0 && nowPage <= 165) {
 			return new ChallengeVO(nowPage);
 		} else {
-			System.out.println("\n\t\t   범위 밖의 숫자입니다. 다시 입력해 주세요.");
-			return new ChallengeVO(0); //null로 넣으면 nullpointer 오류
+			throw new NullPointerException();//null로 넣으면 nullpointer 오류
 		}
 	}
 

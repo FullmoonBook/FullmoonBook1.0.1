@@ -63,18 +63,18 @@ public class FrontController {
 
 	public void process() throws Exception {
 		while (loginRun) {
-			do {
-				mainView.welcome();
-				poemView.getPoems();
-				try {
-					login = mainView.loginMenu(scanner);
-					if(login == 0 || login >=3) {
-						throw new Exception();
-					}
-				} catch (Exception e) {
-					System.out.println("\n\t\t\t\t 잘못된 입력입니다.");
+
+			mainView.welcome();
+			poemView.getPoems();
+			try {
+				login = mainView.loginMenu(scanner);
+				if (login == 0 || login >= 3) {
+					throw new Exception();
 				}
-			} while (!(login == 1 || login == 2 || login ==3));
+			} catch (Exception e) {
+				System.out.println("\n\t\t\t\t 잘못된 입력입니다.");
+				continue;
+			}
 
 			switch (login) {
 			case 1:
@@ -82,7 +82,7 @@ public class FrontController {
 					joinController.join(scanner);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
-					System.err.println("\t\t    중복된 아이디입니다. 다시 입력해 주세요.");
+					System.out.println("\n\t       이미 존재하는 아이디입니다. 다른 아이디를 입력해 주세요.");
 				}
 				continue;
 			case 2:
@@ -149,7 +149,7 @@ public class FrontController {
 									continue;
 								}
 
-							} catch (Exception e) {
+							} catch (java.sql.SQLIntegrityConstraintViolationException e) {
 								System.out.println("\n\t\t\t\t이미 진행 중입니다.");
 								continue;
 							}
@@ -161,14 +161,10 @@ public class FrontController {
 									challengeView.updateGoalResult(updateGoal);
 									continue;
 
-//								} else {
-//									System.out.println("\t\t\t\t  .　｡・｡/) /)｡・｡");
-//									System.out.println("\t\t\t\t  ｡ﾟ 　( ﾟ´Д｀)　 ﾟ｡");
-//									System.out.println("\t\t\t\t  　　o( U U");
-//									System.out.println("\t\t\t\t  　　 'ｰ'ｰ'");
-//									System.out.println("\t\t\t    먼저 챌린지를 시작해 주세요.");
-//									continue;
 								}
+							} catch (NullPointerException e) {
+								System.out.println("\n\t\t       범위 밖의 숫자입니다. 다시 입력해 주세요.");
+								continue;
 							} catch (Exception e) {
 								System.out.println("\n\t\t\t\t   .　｡・｡/) /)｡・｡");
 								System.out.println("\t\t\t\t   ｡ﾟ 　( ﾟ´Д｀)　 ﾟ｡");
@@ -202,34 +198,34 @@ public class FrontController {
 					int menu4 = mainView.reviewMenu(scanner);
 					switch (menu4) {
 					case 1:
-						if (BookApplication.challengeGetSession().getGoal() == 100) {
+						if (challController.getGoal(session) == 100) {
 							ReviewVO iReview = reviewView.inputReview(scanner);
 							if (iReview != null) {
 								int insertReview = reviewController.insertReview(iReview);
 								reviewView.inputResult(insertReview);
 							}
 						} else {
-							System.out.println("챌린지 달성 후 작성이 가능합니다.");
+							System.out.println("\n\t\t\t   챌린지 달성 후 작성이 가능합니다.");
 						}
 					case 2:
 						continue;
 					}
 
 				case 4: // 마이페이지
-					System.out.println();
-					System.out.println();
-					System.out.println("\t\t\t 📌" + vo.getId() + "님의 챌린지 기록📌");
-
-//					try {
+					System.out.println("\n──────────────────────────────────────────────────────────────────────────────────────");
+					System.out.println("\n\n\t\t\t    📌" + vo.getId() + "님의 챌린지 기록📌\n\n");
+					
+					
+					try {
 						List<BookVO> historys = bookController.getHistory(session.getId());
 						bookView.getHistory(historys);
+						System.out.print(challController.getGoal(session) + " %\n\n");
+						
+					} catch (Exception e) {
+						System.out.println("\n\n\t\t\t       챌린지 기록이 없습니다.\n\n");
+					}
 
-//					} catch (Exception e) {
-//						System.out.println("챌린지 기록이 없습니다.");
-//						continue;
-//					}
 
-//					System.out.println(dao.getChallenge("0003").getBookName() + challController.getGoal(session) + "%");
 					int menu5 = mainView.toMainMenu(scanner);
 					switch (menu5) {
 					case 1:
@@ -248,8 +244,8 @@ public class FrontController {
 					case 5:
 						mainView.welcome();
 						poemView.getPoems();
-					    mainView.loginMenu(scanner);
-					    break;
+						mainView.loginMenu(scanner);
+						break;
 					case 3:
 						System.out.println("\n\t\t\t      프로그램을 종료합니다.");
 						System.out.println("\n\t\t\t        다음에 또 만나요!");
@@ -260,7 +256,7 @@ public class FrontController {
 					default:
 						break;
 					}
-					
+
 				default:
 					continue;
 
