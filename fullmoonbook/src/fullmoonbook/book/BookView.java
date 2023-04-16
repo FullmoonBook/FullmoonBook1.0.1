@@ -19,25 +19,25 @@ public class BookView {
 	}
 
 	public void getNowChallenge(BookVO vo) {
-		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
+		System.out.println("\n──────────────────────────────────────────────────────────────────────────────────────");
 		System.out.println();
-		System.out.println("\t\t\t  이번 보름 챌린지");
+		System.out.println("\t\t\t\t  이번 보름 챌린지");
 		System.out.println(vo.printBook(false));
 		System.out.println();
 	}
 
 	public void getNextChallenge(BookVO vo) {
-		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
-		System.out.println();
-		System.out.println("\t\t\t  다음 보름 챌린지");
+		System.out.println("\n──────────────────────────────────────────────────────────────────────────────────────");
+		System.out.println("\n");
+		System.out.println("\t\t\t\t  다음 보름 챌린지");
 		System.out.println(vo.printBook(true));
 		System.out.println();
 	}
 
 	public void getChallenge(BookVO vo) {
-		System.out.println("\n─────────────────────────────────────────────────────────────────────────────");
+		System.out.println("\n──────────────────────────────────────────────────────────────────────────────────────");
 		System.out.println();
-		System.out.println("\t\t\t  현재 챌린지");
+		System.out.println("\t\t\t\t  현재 챌린지");
 		System.out.println(vo.printA());
 		System.out.println();
 	}

@@ -2,14 +2,12 @@ package fullmoonbook.challenge;
 
 import java.util.Scanner;
 
+import fullmoonbook.common.BookApplication;
 import fullmoonbook.join.MemberVO;
 
 public class ChallengeView {
-//	public static void main(String[] args) {
-//	
-//		
-//		
-//	}
+	public static final Scanner SCANNER = new Scanner(System.in);
+
 
 	private static ChallengeView instance = new ChallengeView();// 싱글톤(객체 1개만 생성)
 
@@ -38,7 +36,7 @@ public class ChallengeView {
 	}
 
 	public ChallengeVO insertChallengeStatus(Scanner scanner) throws Exception{
-		System.out.print("도전하시겠습니까? (Y/N)");
+		System.out.print("\n   🌒 도전하시겠습니까? (Y/N) ▹ ");
 		String status = scanner.nextLine();
 		if (status.equals("y")) {
 			return new ChallengeVO(status);
@@ -48,7 +46,7 @@ public class ChallengeView {
 
 	public void insertStatusResult(int count) {
 		if (count > 0) {
-			System.out.println("당신의 도전을 응원합니다.");
+			System.out.println("\n\t\t\t    당신의 도전을 응원합니다!");
 		} else {
 			System.out.println("");
 		}
@@ -56,25 +54,31 @@ public class ChallengeView {
 	}
 
 	public ChallengeVO updateGoal(Scanner scanner) {
-		System.out.println("현재 읽은 페이지를 입력해 주세요(1~165쪽)");
+		System.out.print("\n   🌒 현재 읽은 페이지를 입력해 주세요(1~165쪽) ▹ ");
 		int nowPage = Integer.parseInt(scanner.nextLine());
 		if (nowPage > 0 && nowPage <= 165) {
 			return new ChallengeVO(nowPage);
 		} else {
-			System.out.println("범위 밖의 숫자입니다. 다시 입력해 주세요.");
+			System.out.println("\n\t\t   범위 밖의 숫자입니다. 다시 입력해 주세요.");
 			return new ChallengeVO(0); //null로 넣으면 nullpointer 오류
 		}
 	}
 
 	public void updateGoalResult(int count) {
 		if (count > 0) {
-			System.out.println("정상적으로 입력되었습니다");
+			System.out.println("\n\t\t\t 페이지가 정상적으로 입력되었습니다.");
+			System.out.println("\n\t\t\t\t   ⚑ " + BookApplication.challengeGetSession().getNowPage() + " / 165쪽");
 		} else {
-			System.out.println("오류");
+			System.out.println("\n\t\t\t  정상적으로 입력되지 않았습니다.");
 		}
 	}
 	public ChallengeVO getStatus(ChallengeVO vo) throws Exception {
 		return new ChallengeVO(vo.getStatus());
 	}
+	public static String inputMenu() {
+		return SCANNER.nextLine();
+		
+	}
+
 
 }

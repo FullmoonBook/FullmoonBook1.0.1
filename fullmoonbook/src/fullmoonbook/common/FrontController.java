@@ -68,22 +68,34 @@ public class FrontController {
 				poemView.getPoems();
 				try {
 					login = mainView.loginMenu(scanner);
+					if(login == 0 || login >=3) {
+						throw new Exception();
+					}
 				} catch (Exception e) {
-					System.out.println("잘못된 입력입니다.");
+					System.out.println("\n\t\t\t\t 잘못된 입력입니다.");
 				}
-			} while (!(login == 1 || login == 2));
+			} while (!(login == 1 || login == 2 || login ==3));
 
 			switch (login) {
 			case 1:
-				joinController.join(scanner);
+				try {
+					joinController.join(scanner);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					System.err.println("\t\t    중복된 아이디입니다. 다시 입력해 주세요.");
+				}
+				continue;
 			case 2:
 				vo = signController.signIn(scanner);
 				while (vo == null) {
 					signController.signIn(scanner);
-					break;
 				}
+				break;
 			case 3: // 프로그램 종료 빠져나가기.
+				System.out.println("\n\t\t\t      프로그램을 종료합니다.");
+				System.out.println("\n\t\t\t        다음에 또 만나요!");
 				loginRun = false;
+				mainRun = false;
 				break;
 			}
 
@@ -98,29 +110,29 @@ public class FrontController {
 						bookView.getNowChallenge(nowBook);
 
 						challenger = dao.getChallenger("0003");
-						System.out.println("\t                     챌린저: " + challenger + "명");
+						System.out.println("\t\t\t\t    챌린저: " + challenger + "명");
 						System.out.println();
 						try {
 							if (challController.getStatus(session).equals("y")) {
 								goal = challController.getGoal(session);
 								if (goal == 100) {
-									System.out.println("                        달성률: 📘📘📘📘📘 " + goal + " %");
+									System.out.println("\t\t\t        달성률: 📘📘📘📘📘  " + goal + " %");
 								} else if (goal >= 80) {
-									System.out.println("                        달성률: 📘📘📘📘📕 " + goal + " %");
+									System.out.println("\t\t\t        달성률: 📘📘📘📘📕  " + goal + " %");
 								} else if (goal >= 60) {
-									System.out.println("                        달성률: 📘📘📘📕📕 " + goal + " %");
+									System.out.println("\t\t\t        달성률: 📘📘📘📕📕  " + goal + " %");
 								} else if (goal >= 40) {
-									System.out.println("                        달성률: 📘📘📕📕📕 " + goal + " %");
+									System.out.println("\t\t\t        달성률: 📘📘📕📕📕  " + goal + " %");
 								} else if (goal >= 20) {
-									System.out.println("                        달성률: 📘📕📕📕📕 " + goal + " %");
+									System.out.println("\t\t\t        달성률: 📘📕📕📕📕  " + goal + " %");
 								} else {
-									System.out.println("                        달성률: 📕📕📕📕📕 " + goal + " %");
+									System.out.println("\t\t\t        달성률: 📕📕📕📕📕  " + goal + " %");
 								}
 							} else {
-								System.out.println("                        달성률: 📕📕📕📕📕 " + goal + " %");
+								System.out.println("\t\t\t        달성률: 📕📕📕📕📕  " + goal + " %");
 							}
 						} catch (Exception e) {
-							System.out.println("                        달성률: 📕📕📕📕📕  0 %");
+							System.out.println("\t\t\t        달성률: 📕📕📕📕📕  0 %");
 						}
 
 						int menu2 = mainView.startChallengeMenu(scanner);
@@ -131,13 +143,14 @@ public class FrontController {
 								if (iMember != null) {
 									int insertStatus = challController.insertChallengeStatus(iMember);
 									challengeView.insertStatusResult(insertStatus);
+									continue;
 								} else {
-									System.out.println("현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요!");
+									System.out.println("\n\t\t   현재 " + challenger + "명의 챌린저가 도전 중입니다. 함께해 주세요!");
 									continue;
 								}
 
 							} catch (Exception e) {
-								System.out.println("이미 진행 중입니다.");
+								System.out.println("\n\t\t\t\t이미 진행 중입니다.");
 								continue;
 							}
 						case 2: // 페이지 입력
@@ -148,20 +161,20 @@ public class FrontController {
 									challengeView.updateGoalResult(updateGoal);
 									continue;
 
-								} else {
-									System.out.println(".　｡・｡/) /)｡・｡");
-									System.out.println("｡ﾟ 　( ﾟ´Д｀)　 ﾟ｡");
-									System.out.println("　　o( U U");
-									System.out.println("　　 'ｰ'ｰ'");
-									System.out.println("먼저 챌린지를 시작해 주세요.");
-									continue;
+//								} else {
+//									System.out.println("\t\t\t\t  .　｡・｡/) /)｡・｡");
+//									System.out.println("\t\t\t\t  ｡ﾟ 　( ﾟ´Д｀)　 ﾟ｡");
+//									System.out.println("\t\t\t\t  　　o( U U");
+//									System.out.println("\t\t\t\t  　　 'ｰ'ｰ'");
+//									System.out.println("\t\t\t    먼저 챌린지를 시작해 주세요.");
+//									continue;
 								}
 							} catch (Exception e) {
-								System.out.println(".　｡・｡/) /)｡・｡");
-								System.out.println("｡ﾟ 　( ﾟ´Д｀)　 ﾟ｡");
-								System.out.println("　　o( U U");
-								System.out.println("　　 'ｰ'ｰ'");
-								System.out.println("먼저 챌린지를 시작해 주세요.");
+								System.out.println("\n\t\t\t\t   .　｡・｡/) /)｡・｡");
+								System.out.println("\t\t\t\t   ｡ﾟ 　( ﾟ´Д｀)　 ﾟ｡");
+								System.out.println("\t\t\t\t   　　o( U U");
+								System.out.println("\t\t\t\t  　 　 'ｰ'ｰ'");
+								System.out.println("\n\t\t\t     먼저 챌린지를 시작해 주세요.");
 								continue;
 							}
 
@@ -227,8 +240,9 @@ public class FrontController {
 					}
 
 				case 5: // 로그아웃
-					System.out.println("로그아웃 되었습니다.");
-				
+					System.out.println("\n\t\t\t         로그아웃 되었습니다.");
+					mainView.welcome();
+					poemView.getPoems();
 					int menu6 = mainView.loginMenu(scanner);
 					switch (menu6) {
 					case 5:
@@ -237,7 +251,9 @@ public class FrontController {
 					    mainView.loginMenu(scanner);
 					    break;
 					case 3:
-						System.out.println("프로그램을 종료합니다.");
+						System.out.println("\n\t\t\t      프로그램을 종료합니다.");
+						System.out.println("\n\t\t\t        다음에 또 만나요!");
+						loginRun = false;
 						mainRun = false;
 						break;
 

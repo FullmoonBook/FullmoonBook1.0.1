@@ -15,12 +15,13 @@ public class JoinView {
         MemberVO vo = null;
         while (true) {
             try {
-                System.out.print("아이디: ");
+            	System.out.print("\n   [회원가입] \n");
+            	System.out.print("\n   🌕 아이디 ▹ ");
                 String id = scanner.nextLine();
                 if (id.length() < 1 || id.length() > 10) {
                     throw new NumberFormatException();
                 }
-                System.out.print("패스워드: ");
+        		System.out.print("   🌕 패스워드 ▹ ");
                 String pw = scanner.nextLine();
                 vo = new MemberVO(id, pw);
                 break;
@@ -41,7 +42,7 @@ public class JoinView {
      */
     public boolean resultJoin(int result, Scanner scanner) {
         if (result > 0) {
-            System.out.println("\n\n\n회원가입이 완료되었습니다. 로그인해주세요.");            
+            System.out.println("\n\n\t\t     회원가입이 완료되었습니다. 로그인해 주세요.");            
             return false;
         }
         System.out.print("회원 가입 실패! 다시 회원가입을 하시겠습니까?(y 또는 n을 입력): ");
