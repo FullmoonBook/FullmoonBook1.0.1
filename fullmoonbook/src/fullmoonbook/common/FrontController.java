@@ -81,7 +81,6 @@ public class FrontController {
 				try {
 					joinController.join(scanner);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					System.out.println("\n\t       이미 존재하는 아이디입니다. 다른 아이디를 입력해 주세요.");
 				}
 				continue;

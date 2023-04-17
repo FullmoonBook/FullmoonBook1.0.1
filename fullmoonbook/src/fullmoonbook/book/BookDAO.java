@@ -38,8 +38,8 @@ public class BookDAO {
 	public BookVO getNowChallenge(String nowChallengeBookNo) throws Exception {
 		//System.out.println(nowChallengeBookNo);
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
-		String user = "pc26_4";
+		String url = "jdbc:oracle:thin:@192.168.142.32:1521:XE";
+		String user = "pc24_4";
 		String password = "java";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		StringBuilder builder = new StringBuilder();
@@ -83,8 +83,8 @@ public class BookDAO {
 
 	public BookVO getNextChallenge(String nextChallengeBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
-		String user = "pc26_4";
+		String url = "jdbc:oracle:thin:@192.168.142.32:1521:XE";
+		String user = "pc24_4";
 		String password = "java";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		StringBuilder builder = new StringBuilder();
@@ -129,8 +129,8 @@ public class BookDAO {
 	
 	public List<BookVO> getHistory(String id) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
-		String user = "pc26_4";
+		String url = "jdbc:oracle:thin:@192.168.142.32:1521:XE";
+		String user = "pc24_4";
 		String password = "java";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		StringBuilder builder = new StringBuilder();

@@ -24,7 +24,7 @@ public class ChallengeDAO {
 	// 챌린지 정보 가져오기
 	public ChallengeVO getChallenge(String searchBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.32:1521:xe", "pc24_4",
 				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
@@ -60,7 +60,7 @@ public class ChallengeDAO {
 
 	// 챌린지 시작 업데이트
 	public int insertChallengeStatus(ChallengeVO vo) throws Exception {
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.32:1521:xe", "pc24_4",
 				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("INSERT INTO challenge (");
@@ -91,7 +91,7 @@ public class ChallengeDAO {
 
 	// 달성률 업데이트
 	public int updateGoal(ChallengeVO vo) throws Exception {
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.32:1521:xe", "pc24_4",
 				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("UPDATE ");
@@ -127,7 +127,7 @@ public class ChallengeDAO {
 	// 챌린저 수 구하기
 	public int getChallenger(String countBookNo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.32:1521:xe", "pc24_4",
 				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
@@ -158,7 +158,7 @@ public class ChallengeDAO {
 	// 챌린지 상태 가져오기
 	public String getStatus(ChallengeVO vo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.32:1521:xe", "pc24_4",
 				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");
@@ -188,7 +188,7 @@ public class ChallengeDAO {
 	// 달성률 가져오기
 	public int getGoal(ChallengeVO vo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.39:1521:xe", "pc26_4",
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.142.32:1521:xe", "pc24_4",
 				"java");
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT");

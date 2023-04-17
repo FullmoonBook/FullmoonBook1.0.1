@@ -33,8 +33,8 @@ public class ReviewDAO {
 	
 	public int insertReview(ReviewVO vo) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url = "jdbc:oracle:thin:@192.168.142.39:1521:XE";
-		String user = "pc26_4";
+		String url = "jdbc:oracle:thin:@192.168.142.32:1521:XE";
+		String user = "pc24_4";
 		String password = "java";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		StringBuilder builder = new StringBuilder();
@@ -67,8 +67,8 @@ public class ReviewDAO {
 
 	public List<ReviewVO> getReviews() throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url = "jdbc:oracle:thin:@192.168.142.39:1521/xe";
-		String user = "pc26_4";
+		String url = "jdbc:oracle:thin:@192.168.142.32:1521:XE";
+		String user = "pc24_4";
 		String password = "java";
 		Connection connection = DriverManager.getConnection(url, user, password);
 		Statement statement = connection.createStatement();

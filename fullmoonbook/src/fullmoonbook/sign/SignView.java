@@ -26,8 +26,8 @@ public class SignView {
 
 	public MemberVO resultLogin(MemberVO vo) {
 		if (vo == null) {
-			System.out.println("\n로그인 정보가 일치하지 않습니다. 아이디와 비밀번호를 확인하세요.");
-			return null;
+			System.out.println("\n\t    로그인 정보가 일치하지 않습니다. 아이디와 비밀번호를 확인하세요.");
+			return vo;
 		}
 		System.out.print("\n\t\t\t\t" + vo.getId() + "님 환영합니다!\n");
 		return vo;
