@@ -8,20 +8,9 @@ public class BookApplication {
 	private static ChallengeVO session1 = new ChallengeVO();
 
 	public static void main(String[] args) throws Exception {
-		try {
-			new FrontController().process();
-		} catch (NumberFormatException e) {
-			System.out.println("다시 입력하세요.");
-			return;
-		}
+		new FrontController().process();
+	}
 
-	} 
-
-	/**
-	 * 로그인한 정보를 가져오는 메소드
-	 * 
-	 * @return session 정보 반환
-	 */
 	public static MemberVO getSession() {
 		return session;
 	}

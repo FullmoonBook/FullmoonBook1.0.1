@@ -22,7 +22,7 @@ public class ReviewView {
 		System.out.println("\t\t\t\t   📌완독자 후기📌");
 		System.out.println();
 		System.out.println();
-		System.out.println("    작성자     평점  내용");
+		System.out.println("      작성자     평점  내용");
 		if(reviews !=null) {
 			int size = reviews.size(); // ArrayList의 크기를 구한다.
 			
