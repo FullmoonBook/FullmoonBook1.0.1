@@ -54,7 +54,7 @@ public class ChallengeView {
 	}
 
 	public ChallengeVO updateGoal(Scanner scanner) throws Exception  {
-		System.out.print("\n   🌒 현재 읽은 페이지를 입력해 주세요(1~165쪽) ▹ ");
+		System.out.print("\n   🌒 현재까지 읽은 페이지를 입력해 주세요(~165쪽) ▹ ");
 		int nowPage = Integer.parseInt(scanner.nextLine());
 		if (nowPage > 0 && nowPage <= 165) {
 			return new ChallengeVO(nowPage);

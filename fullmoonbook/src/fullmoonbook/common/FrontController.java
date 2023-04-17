@@ -163,7 +163,7 @@ public class FrontController {
 
 									}
 								} catch (NumberFormatException e) {
-									System.out.println("\n\t\t       범위 밖의 숫자입니다. 다시 입력해 주세요.");
+									System.out.println("\n\t\t       1부터 165이하의 '숫자'만 입력해 주세요.");
 									continue;
 								} catch (Exception e) {
 									System.out.println("\n\t\t\t\t   .　｡・｡/) /)｡・｡");
@@ -199,13 +199,15 @@ public class FrontController {
 						switch (menu4) {
 						case 1:
 							try {
-
 								if (challController.getGoal(session) == 100) {
 									ReviewVO iReview = reviewView.inputReview(scanner);
 									if (iReview != null) {
 										int insertReview = reviewController.insertReview(iReview);
 										reviewView.inputResult(insertReview);
 									}
+								} else {
+									System.out.println("\n\t\t\t챌린지 달성 후 작성이 가능합니다.");
+									continue;
 								}
 							} catch (Exception e) {
 								System.out.println("\n\t\t\t챌린지 달성 후 작성이 가능합니다.");
